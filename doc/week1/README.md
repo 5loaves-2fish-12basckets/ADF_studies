@@ -12,7 +12,7 @@ Text classification
 Regression
 Overfitting and underfitting
 
--->[jupyter notebooks:](tf-tutorials)
+-->[jupyter notebooks:](../tf-tutorials)
 
 2. read papers:  
 [Are Adversarial Examples inevitable](#paper1)  
@@ -26,14 +26,14 @@ Overfitting and underfitting
 
  
 
-<a name="paper1"></a>
+<a name="paper1">Are Adversarial Examples inevitable</a>
 https://openreview.net/pdf?id=r1lWUoA9FQ  
 
-<a name="paper2"></a>
+<a name="paper2">Adversarial Examples: Attacks and Defenses for Deep Learning</a>
  https://arxiv.org/pdf/1712.07107.pdf
 
 
-<a name="paper3"></a>
+<a name="paper3">Explaining and Harnessing Adversarial Examples</a>
 
 https://arxiv.org/abs/1412.6572  
 <a name="paper4"></a>
