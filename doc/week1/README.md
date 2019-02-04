@@ -26,19 +26,21 @@ Overfitting and underfitting
 
  
 
-<a name="paper1">Are Adversarial Examples inevitable</a>
-https://openreview.net/pdf?id=r1lWUoA9FQ  
+<a name="paper1">Are Adversarial Examples inevitable</a>    
+paper link: https://openreview.net/pdf?id=r1lWUoA9FQ    
 
-<a name="paper2">Adversarial Examples: Attacks and Defenses for Deep Learning</a>
- https://arxiv.org/pdf/1712.07107.pdf
+<a name="paper2">Adversarial Examples: Attacks and Defenses for Deep Learning</a>  
+paper link:  https://arxiv.org/pdf/1712.07107.pdf  
+  
+  
+<a name="paper3">Explaining and Harnessing Adversarial Examples</a>  
 
+paper link:  https://arxiv.org/abs/1412.6572    
+  
 
-<a name="paper3">Explaining and Harnessing Adversarial Examples</a>
-
-https://arxiv.org/abs/1412.6572  
-<a name="paper4"></a>
-  https://arxiv.org/abs/1312.6199 
-<a name="paper5"></a>
- https://arxiv.org/abs/1608.04644  
-<a name="paper6"></a>
- https://arxiv.org/abs/1706.06083  
+<a name="paper4">Intriguing properties of neural networks</a>   
+paper link: https://arxiv.org/abs/1312.6199   
+<a name="paper5">Towards Evaluating the Robustness of Neural Networks</a>  
+paper link: https://arxiv.org/abs/1608.04644    
+<a name="paper6">Towards Deep Learning Models Resistant to Adversarial Attacks</a>  
+paper link: https://arxiv.org/abs/1706.06083    
