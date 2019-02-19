@@ -15,13 +15,11 @@ scheduled date: Feb. 1 - Feb. 7
 >This paper attemps to illustrate and characterize adversarial examples using mathematical models
 
 #### selected key points
-1. math setup: some data points lie in space $\Omega$. C partitions $\Omega$ into disjoint subsets. If there is $x,\hat{x}\in\Omega$ with $C(\hat{x})\neq c, C(x)=c$ and $d(x,\hat{x})\le\epsilon$.
-Then $\hat{x}$ is an adversarial example
+1. math setup: some data points lie in space $\Omega$. C partitions $\Omega$ into disjoint subsets. If there is $x,\hat{x}\in\Omega$ with $C(\hat{x})\neq c, C(x)=c$ and $d(x,\hat{x})\le\epsilon$. Then $\hat{x}$ is an adversarial example
 2. This paper goes on to use above settings to derive upon simple models such as half of a sphere. 
 
 #### branching points
-1. The math setup is weird. 
-It does not separate data points from the whole space, thus assuming that data points form a continuous space, rather than discrete points. In this condition, there will always be adversarial points due to denseness of real number.
+1. The math setup is weird. It does not separate data points from the whole space, thus assuming that data points form a continuous space, rather than discrete points. In this condition, there will always be adversarial points due to denseness of real number.
 2. A better setup: Let R be the full image space with n = w*h, $\Omega_i$ is the set of discrete data points belonging to class i. C partitions $\rm I\!R^n$ into disjoing subspaces, each containing a $\Omega_i$. if any $x\in\Omega_i$ is closer to the boundary of C than $\epsilon$, there exist an adversarial example.
 
 
@@ -40,6 +38,7 @@ It does not separate data points from the whole space, thus assuming that data p
     * Can also attack GAN, VAE to produce different result
     * printability can be considered when attempting for real world objects (ex glasses for adversarial on face detection)
     * Defence methods include reactive (detacting adversarial examples) and proactive (making models more robust)
+
 #### branching points
 1. Intriguing properties of neural networks is the first paper on adversarial attacks. Often refered by author as Szegedy et al. in this and other following papers
 2. As of July 2018, most defenses target adversarial examples in computer vision, leaving other areas (Natural Language, Malware detection) in need of research efforts. However it seems that there is currently no robust defence method.
@@ -76,13 +75,10 @@ $\eta=\epsilon sign(\nabla_xJ(\theta,x,y))$, J is the cost function
 
 #### selected key points
 1. (a layer in neural net forms a space of sementic meaning?) there is no distinction between individual high levl units and random linear combinations of high level unit. This suggest that it is the space rather than individual units that contains the semantic information in the high layers of neural networks
-2. let $\phi(x)$ be activation values of some layer, $x$ are the some input img
-expeiment show that for any random direction $v\in\rm I\!R^n$ (including $\hat{e}_i$) $x'=arg\max\limits_{x\in I}\langle\phi(x),v\rangle$  will select out examples semantically related to each other.
+2. let $\phi(x)$ be activation values of some layer, $x$ are the some input img. expeiment show that for any random direction $v\in\rm I\!R^n$ (including $\hat{e}_i$) $x'=arg\max\limits_{x\in I}\langle\phi(x),v\rangle$  will select out examples semantically related to each other.
 3. it is argued ("Learning deep architectures in ai") that the deep stack of non-linear layers between input output of neural net are a way for the model to encode a non-local generalization prior over the input-space. Which means it is possible for deep learning model to assign regions of input space without training example to correct class (ex same object with different viewpoint and are far in pixel space)
 4. local generalization, meaning that all data close to training data point will be assigned to same class is assumed above. However the assumption is false as this paper found that deep neural nets learn fairly discontinuous input-output mappings such that small perturbation can cause many networks to error (there are adversarial examples and it is transferable to different networks)
-5. To solve:  
-Minimize $\Vert r\Vert_2$ s.t. $f(x+r)=l, x+r \in [0,1]^m$ approximate by box-constrained L-BFGS, i.e. by line-serach to find minimum c>0?
-Minimize $c|r|+loss_f(x+r,l)$ subject to $x+r \in [0,1]^m$
+5. To solve: Minimize $\Vert r\Vert_2$ s.t. $f(x+r)=l, x+r \in [0,1]^m$ approximate by box-constrained L-BFGS, i.e. by line-serach to find minimum c>0? Minimize $c|r|+loss_f(x+r,l)$ subject to $x+r \in [0,1]^m$
 6. adding gaussian noise with same distance does not effect error as much as adversarial perturbation
 7. adversarial example generizes across models trained with disjoing subset within same training set (MNIST)
 8. Calculates upper bound of (possibility for adversarial example/instability of nerual net)? and suggests that 'simple regularization of the parameters, consisting in penalizing each Lipschitz bound, might help improve the generalisation  error of the networks'
@@ -98,10 +94,6 @@ Minimize $c|r|+loss_f(x+r,l)$ subject to $x+r \in [0,1]^m$
 
 #### selected key points
 1. distillation: train second model with output of first model (it will be softer than one hot vector and contains info), reduces previous attack success rate from 95% to 0.5%
-2. $L_p\equiv\Vert x-x'\Vert_p\equiv\bigg(\sum\limits_{i=1}^n|(x-x')_i|^p\bigg)^\frac{1}{p}$
-$L_0=$ how many pixel changed
-$L_2=$ Euclidean distance
-$L_\infty=$ maximum change of any coordinate
 3. prior attack methods: L-BFGS, FGSM, JSMA(greedy algorithm to pick pixel to modify), DeepFool(approximate as linear iteratively to move data point close to boundary)
 4. Following Szegedy et al.'s formulation for adversarial examples:
 mimimize $D(x,x+\delta)$
@@ -109,14 +101,6 @@ such that $C(x+\delta)=t, x+\delta\in [0,1]^n$
 (C is classifyer func. t is some class [0,1] is range for img)
 5. because constraint C()... is highly non-linear, define f such that $C(x+\delta)=t \iff f(x+\delta)\le0$  
 list of possible fs:  
-$f_1(x')=-loss_{F,t}(x')+1$  
-$f_2(x')=(\max\limits_{i\neq t}(F(x')_i)-F(x')_t)^+$  
-$f_3(x')=softplus(\max\limits_{i\neq t}(F(x')_i)-F(x')_t)-\log(2)$  
-$f_4(x')=(0.5-F(x')_t)^+$  
-$f_5(x')=-\log(2F(x')_t-2)$  
-$f_6(x')=(\max\limits_{i\neq t}(Z(x')_i)-Z(x')_t)^+$  
-$f_7(x')=softplus(\max\limits_{i\neq t}(Z(x')_i)-Z(x')_t)^+$  
-$(\cdot)^+\equiv\max(e,0), softplus(x)=\log(1+\exp(x))$ , loss is cross-entropy  
 6. Now we have:
 minimize $D(x,x+\delta)$  
 such that $f(x+\delta\le 0), x+\delta\in[0,1]^n$  
@@ -137,6 +121,20 @@ $$softmax(x,T)_i=\frac{e^{x_i/T}}{\sum_je^x_j/T}$$
 than train teacher network at T=T, teacher generate soft label, train student at T=T with soft label, test student at T=1  
 Thus T will meddle with gradients and previous attacks will fail  
  
+
+#### details notations and functions
+* $L_p\equiv\Vert x-x'\Vert_p\equiv\bigg(\sum\limits_{i=1}^n|(x-x')_i|^p\bigg)^\frac{1}{p}$
+* $L_0=$ how many pixel changed
+* $L_2=$ Euclidean distance
+* $L_\infty=$ maximum change of any coordinate
+* $f_1(x')=-loss_{F,t}(x')+1$  
+* $f_2(x')=(\max\limits_{i\neq t}(F(x')_i)-F(x')_t)^+$  
+* $f_3(x')=softplus(\max\limits_{i\neq t}(F(x')_i)-F(x')_t)-\log(2)$  
+* $f_4(x')=(0.5-F(x')_t)^+$  
+* $f_5(x')=-\log(2F(x')_t-2)$  
+* $f_6(x')=(\max\limits_{i\neq t}(Z(x')_i)-Z(x')_t)^+$  
+* $f_7(x')=softplus(\max\limits_{i\neq t}(Z(x')_i)-Z(x')_t)^+$  
+* $(\cdot)^+\equiv\max(e,0), softplus(x)=\log(1+\exp(x))$ , loss is cross-entropy  
 
 #### branching points
 1. should checkout L-BFGS JSMA DeepFool in future
