@@ -22,9 +22,8 @@ Then $\hat{x}$ is an adversarial example
 #### branching points
 1. The math setup is weird. 
 It does not separate data points from the whole space, thus assuming that data points form a continuous space, rather than discrete points. In this condition, there will always be adversarial points due to denseness of real number.
-2. A better setup:
-Let $\rm I\!R^n$ be the full image space with n = w*h, $\Omega_i$ is the set of discrete data points belonging to class i. C partitions $\rm I\!R^n$ into disjoing subspaces, each containing a $\Omega_i$. if any $x\in\Omega_i$ is closer to the boundary of C than $\epsilon$, there exist an adversarial example.
-    
+2. A better setup: Let R be the full image space with n = w*h, $\Omega_i$ is the set of discrete data points belonging to class i. C partitions $\rm I\!R^n$ into disjoing subspaces, each containing a $\Omega_i$. if any $x\in\Omega_i$ is closer to the boundary of C than $\epsilon$, there exist an adversarial example.
+
 
 ## Adversarial Examples: Attacks and Defenses for Deep Learning
 [paper link](https://arxiv.org/pdf/1712.07107.pdf)
@@ -63,14 +62,16 @@ $\eta=\epsilon sign(\nabla_xJ(\theta,x,y))$, J is the cost function
 5. Under linear view, adversarial example form broad subspaces. This is clearly proven by adjusting $\epsilon$ along the direction $sign(\nabla_xJ(\theta,x,y))$
 6. Generative model (discriminate real/fake(adversarial) data) is useless. Ensembling is also useless
 7. Conclusion: linearity is key. Deep learning model is easy to train, and so is easy to attack.
+
 #### branching points
 1. nonlinear model families such as RBF networks can reduce vulnerability. What is RBF, why is it resistant to rubbish class examples!
 2. Is it true that robust deep model is definitely possible? should be able to do $x+\eta\rightarrow x$ A deep learning model that modifies data as it classifies
 3. If linearity is key, perhaps biologically neurons avoid this by being non-linear for single cell (full on/off) while linear for ensembles (how does ensemble and tuning curve work!!)
 4. Perhaps each point works for itself and does not consider whether it forms a reasonable picture along side other examples (reflecting on rubbish class example as noise imgs generated from FGSM from random values blank)
+
 ## Intriguing properties of neural networks 
 [paper link](https://arxiv.org/abs/1312.6199)
->The first paper on adversarial attack written by Szegedy et al.
+>The first paper on adversarial attack written by Szegedy et al.  
 >2 intriguing properties: a. layer forms a space of semantic meanings (rather than each unit in layer hold meaning) b. local generalization assumption is broken by adversarial examples.
 
 #### selected key points
@@ -79,15 +80,17 @@ $\eta=\epsilon sign(\nabla_xJ(\theta,x,y))$, J is the cost function
 expeiment show that for any random direction $v\in\rm I\!R^n$ (including $\hat{e}_i$) $x'=arg\max\limits_{x\in I}\langle\phi(x),v\rangle$  will select out examples semantically related to each other.
 3. it is argued ("Learning deep architectures in ai") that the deep stack of non-linear layers between input output of neural net are a way for the model to encode a non-local generalization prior over the input-space. Which means it is possible for deep learning model to assign regions of input space without training example to correct class (ex same object with different viewpoint and are far in pixel space)
 4. local generalization, meaning that all data close to training data point will be assigned to same class is assumed above. However the assumption is false as this paper found that deep neural nets learn fairly discontinuous input-output mappings such that small perturbation can cause many networks to error (there are adversarial examples and it is transferable to different networks)
-5. To solve:
+5. To solve:  
 Minimize $\Vert r\Vert_2$ s.t. $f(x+r)=l, x+r \in [0,1]^m$ approximate by box-constrained L-BFGS, i.e. by line-serach to find minimum c>0?
 Minimize $c|r|+loss_f(x+r,l)$ subject to $x+r \in [0,1]^m$
 6. adding gaussian noise with same distance does not effect error as much as adversarial perturbation
 7. adversarial example generizes across models trained with disjoing subset within same training set (MNIST)
 8. Calculates upper bound of (possibility for adversarial example/instability of nerual net)? and suggests that 'simple regularization of the parameters, consisting in penalizing each Lipschitz bound, might help improve the generalisation  error of the networks'
+
 #### branching points
 1. what is L-BFGS?
 2. Lipschitz bound? Spectral Analysis of Unstability does not seem to give a clear answer.
+
 ## Towards Evaluating the Robustness of Neural Networks 
 [paper link](https://arxiv.org/abs/1608.04644)
 > Explain how defensive distillation protects from previous attacks and show that it is not robust against proposed attacks algorithms (C & W attacks for $L_0, L_2, L_\infty$ distance metrics).
@@ -104,40 +107,42 @@ $L_\infty=$ maximum change of any coordinate
 mimimize $D(x,x+\delta)$
 such that $C(x+\delta)=t, x+\delta\in [0,1]^n$
 (C is classifyer func. t is some class [0,1] is range for img)
-5. because constraint C()... is highly non-linear, define f such that $C(x+\delta)=t \iff f(x+\delta)\le0$
-list of possible fs:
-$f_1(x')=-loss_{F,t}(x')+1$
-$f_2(x')=(\max\limits_{i\neq t}(F(x')_i)-F(x')_t)^+$
-$f_3(x')=softplus(\max\limits_{i\neq t}(F(x')_i)-F(x')_t)-\log(2)$
-$f_4(x')=(0.5-F(x')_t)^+$
-$f_5(x')=-\log(2F(x')_t-2)$
-$f_6(x')=(\max\limits_{i\neq t}(Z(x')_i)-Z(x')_t)^+$
-$f_7(x')=softplus(\max\limits_{i\neq t}(Z(x')_i)-Z(x')_t)^+$
-$(\cdot)^+\equiv\max(e,0), softplus(x)=\log(1+\exp(x))$ , loss is cross-entropy
+5. because constraint C()... is highly non-linear, define f such that $C(x+\delta)=t \iff f(x+\delta)\le0$  
+list of possible fs:  
+$f_1(x')=-loss_{F,t}(x')+1$  
+$f_2(x')=(\max\limits_{i\neq t}(F(x')_i)-F(x')_t)^+$  
+$f_3(x')=softplus(\max\limits_{i\neq t}(F(x')_i)-F(x')_t)-\log(2)$  
+$f_4(x')=(0.5-F(x')_t)^+$  
+$f_5(x')=-\log(2F(x')_t-2)$  
+$f_6(x')=(\max\limits_{i\neq t}(Z(x')_i)-Z(x')_t)^+$  
+$f_7(x')=softplus(\max\limits_{i\neq t}(Z(x')_i)-Z(x')_t)^+$  
+$(\cdot)^+\equiv\max(e,0), softplus(x)=\log(1+\exp(x))$ , loss is cross-entropy  
 6. Now we have:
-minimize $D(x,x+\delta)$
-such that $f(x+\delta\le 0), x+\delta\in[0,1]^n$
-alternatively:
-minimize $D(x,x+\delta)+c\cdot f(x+\delta)$
-such that $x+\delta\in[0,1]^n$
-c>0, empirically smallest c has best result
+minimize $D(x,x+\delta)$  
+such that $f(x+\delta\le 0), x+\delta\in[0,1]^n$  
+alternatively:  
+minimize $D(x,x+\delta)+c\cdot f(x+\delta)$  
+such that $x+\delta\in[0,1]^n$  
+c>0, empirically smallest c has best result  
 7. The paper used constrants to ensure that modification yieds valid images (discrete pixel (0-255), change of variable$\delta_i=\frac{1}{2}(\tanh(w_i)+1)-x_i$)
-8. final $L_2$ attack is:
-minimize $\Vert\frac{1}{2}(tanh(w)+1)-x\Vert^2_2+c\cdot f(\frac{1}{2}(tanh(w)+1))$
-$f(x')=\max(\max\{Z(x')_i:i\neq t\}-Z(x')_t,-\kappa)$
-$\kappa$ is for confidence level
-$L_0$ attack is iteratively run $L_2$ attack and remove pixel i with lower $\nabla f(x+\delta)_i\cdot\delta_i$ value
-$L_\infty$ attack is by
-minimize $c\cdot f(x+\delta)+\sum\limits_i[(\delta_i-\tau)^+]$, with $\tau*=0.9$ after each successful iteration 
-9. defensive distillation use
-$$softmax(x,T)_i=\frac{e^{x_i/T}}{\sum_je^x_j/T}$$
-than train teacher network at T=T, teacher generate soft label, train student at T=T with soft label, test student at T=1
-Thus T will meddle with gradients and previous attacks will fail
+8. final $L_2$ attack is:  
+minimize $\Vert\frac{1}{2}(tanh(w)+1)-x\Vert^2_2+c\cdot f(\frac{1}{2}(tanh(w)+1))$  
+$f(x')=\max(\max\{Z(x')_i:i\neq t\}-Z(x')_t,-\kappa)$  
+$\kappa$ is for confidence level  
+$L_0$ attack is iteratively run $L_2$ attack and remove pixel i with lower $\nabla f(x+\delta)_i\cdot\delta_i$ value  
+$L_\infty$ attack is by  
+minimize $c\cdot f(x+\delta)+\sum\limits_i[(\delta_i-\tau)^+]$, with $\tau*=0.9$ after each successful iteration   
+9. defensive distillation use  
+$$softmax(x,T)_i=\frac{e^{x_i/T}}{\sum_je^x_j/T}$$  
+than train teacher network at T=T, teacher generate soft label, train student at T=T with soft label, test student at T=1  
+Thus T will meddle with gradients and previous attacks will fail  
  
+
 #### branching points
 1. should checkout L-BFGS JSMA DeepFool in future
 2. this is a good example of formulating math to produce deep learning success!
 3. not clear on how the last part on gradients yet!
+
 ## Towards Deep Learning Models Resistant to Adversarial Attacks
 [paper link](https://arxiv.org/abs/1706.06083)
 > Believes that size is all, if size is big enough adversarial proof networks is achievable
@@ -151,6 +156,7 @@ $\min\limits_\theta\rho(\theta)$, where $\rho(\theta)=\rm I\!E_{(x,y)\sim D}\big
 which is to minimize (adversarial loss)
 4. experiment PGD with multiple random restarts find that adversarail loss tend plateaus around same value, (the fact that deep learning plateaus around same value for training, is believed to have multiple same value local minima)
 5. need to solve saddle point problem + show that value is small
+
 #### branching points
 1. which paper beats this??
 2. Danskin's theorm states that gradients at inner maximizers corresponds to descent directions for the saddle point problem
