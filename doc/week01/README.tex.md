@@ -100,29 +100,37 @@ $\eta=\epsilon sign(\nabla_xJ(\theta,x,y))$, J is the cost function
  
 #### formulations
 Following Szegedy et al.'s formulation for adversarial examples:  
-> mimimize $D(x,x+\delta)$
-> such that $C(x+\delta)=t, x+\delta\in [0,1]^n$
-> (C is classifyer func. t is some class [0,1] is range for img)
-
+```
+mimimize $D(x,x+\delta)$  
+such that $C(x+\delta)=t, x+\delta\in [0,1]^n$  
+(C is classifyer func. t is some class [0,1] is range for img)  
+```
 Now we have:  
-> minimize $D(x,x+\delta)$   
-> such that $f(x+\delta\le 0), x+\delta\in[0,1]^n$  
-
+```
+minimize $D(x,x+\delta)$   
+such that $f(x+\delta\le 0), x+\delta\in[0,1]^n$  
+```
 alternatively:  
-> minimize $D(x,x+\delta)+c\cdot f(x+\delta)$  
-> such that $x+\delta\in[0,1]^n$  
-> c>0, empirically smallest c has best result  
-
+```
+minimize $D(x,x+\delta)+c\cdot f(x+\delta)$  
+such that $x+\delta\in[0,1]^n$  
+c>0, empirically smallest c has best result  
+```
 finally $L_2$ attack is:  
-> minimize $\Vert\frac{1}{2}(tanh(w)+1)-x\Vert^2_2+c\cdot f(\frac{1}{2}(tanh(w)+1))$  
-> $f(x')=\max(\max{Z(x')_i:i\neq t}-Z(x')_t,-\kappa)$
+```
+minimize $\Vert\frac{1}{2}(tanh(w)+1)-x\Vert^2_2+c\cdot f(\frac{1}{2}(tanh(w)+1))$   
+$f(x')=\max(\max{Z(x')_i:i\neq t}-Z(x')_t,-\kappa)$  
+```
+```
 $\kappa$ is for confidence level  
 $L_0$ attack is iteratively run $L_2$ attack and remove pixel i with lower $\nabla f(x+\delta)_i\cdot\delta_i$ value  
 $L_\infty$ attack is by  
-> minimize $c\cdot f(x+\delta)+\sum\limits_i[(\delta_i-\tau)^+]$, with $\tau*=0.9$ after each successful iteration   
+```
+minimize $c\cdot f(x+\delta)+\sum\limits_i[(\delta_i-\tau)^+]$, with $\tau*=0.9$ after each successful iteration   
 defensive distillation use $softmax(x,T)_i=\frac{e^{x_i/T}}{\sum_je^x_j/T}$  
 than train teacher network at T=T, teacher generate soft label, train student at T=T with soft label, test student at T=1  
 Thus T will meddle with gradients and previous attacks will fail  
+
 
 #### list of notations and functions
 * $L_p\equiv\Vert x-x'\Vert_p\equiv\bigg(\sum\limits_{i=1}^n|(x-x')_i|^p\bigg)^\frac{1}{p}$
