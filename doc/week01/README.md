@@ -160,7 +160,3 @@ which is to minimize (adversarial loss)
 2. Danskin's theorm states that gradients at inner maximizers corresponds to descent directions for the saddle point problem
 3. it seems wierd to say that data points of different class would be closer than <img src="/doc/week01/tex/9ae7733dac2b7b4470696ed36239b676.svg?invert_in_darkmode&sanitize=true" align=middle width=7.66550399999999pt height=14.15524440000002pt/> since the adversarial examples can mostly be undetected by human.
 4. if cifar need resnet than imagenet...
-
-
-<img src="/doc/week01/tex/cef0bb2c16647a8ced09b1b82cec84d2.svg?invert_in_darkmode&sanitize=true" align=middle width=28.300557449999992pt height=24.65753399999998pt/>
-<img src="/doc/week01/tex/312bd1d1183aa19000298bafabcce162.svg?invert_in_darkmode&sanitize=true" align=middle width=297.9625935pt height=24.7161288pt/>, <img src="/doc/week01/tex/5c62da39aa7289df62d937cb24a31161.svg?invert_in_darkmode&sanitize=true" align=middle width=9.47111549999999pt height=14.15524440000002pt/> is for confidence level  
