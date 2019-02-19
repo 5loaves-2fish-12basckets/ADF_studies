@@ -1,7 +1,10 @@
 
 # week1 paper reviews for ADF
-scheduled date: Feb. 1 - Feb. 7    [back to table](README.md);[back to schedule](https://github.com/5loaves-2fish-12basckets/ADF_studies/)
-
+scheduled date: Feb. 1 - Feb. 7  
+<div style="text-align: right">  
+[back to table](README.md);[back to schedule](https://github.com/5loaves-2fish-12basckets/ADF_studies/)
+</div>
+ 
 > paper list:  
 [Are Adversarial Examples inevitable](#Are-Adversarial-Examples-inevitable)    
 [Adversarial Examples: Attacks and Defenses for Deep Learning](#Adversarial-Examples-Attacks-and-Defenses-for-Deep-Learning)    
