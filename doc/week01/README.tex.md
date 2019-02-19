@@ -3,12 +3,12 @@
 scheduled date: Feb. 1 - Feb. 7    
 
 > paper list:  
-[Are Adversarial Examples inevitable](#Are-Adversarial-Examples-inevitable)
-[Adversarial Examples: Attacks and Defenses for Deep Learning](#Adversarial-Examples-Attacks-and-Defenses-for-Deep-Learning)
-[Explaining and Harnessing Adversarial Examples](#Explaining-and-Harnessing-Adversarial-Examples)
-[Intriguing properties of neural networks](#Intriguing-properties-of-neural-networks)
-[Towards Evaluating the Robustness of Neural Networks](#Towards-Evaluating-the-Robustness-of-Neural-Networks)
-[Towards Deep Learning Models Resistant to Adversarial Attacks](#Towards-Deep-Learning-Models-Resistant-to-Adversarial-Attacks)
+[Are Adversarial Examples inevitable](#Are-Adversarial-Examples-inevitable)    
+[Adversarial Examples: Attacks and Defenses for Deep Learning](#Adversarial-Examples-Attacks-and-Defenses-for-Deep-Learning)    
+[Explaining and Harnessing Adversarial Examples](#Explaining-and-Harnessing-Adversarial-Examples)  
+[Intriguing properties of neural networks](#Intriguing-properties-of-neural-networks)    
+[Towards Evaluating the Robustness of Neural Networks](#Towards-Evaluating-the-Robustness-of-Neural-Networks)  
+[Towards Deep Learning Models Resistant to Adversarial Attacks](#Towards-Deep-Learning-Models-Resistant-to-Adversarial-Attacks)  
 
 ## Are Adversarial Examples inevitable? 
 [paper link](https://openreview.net/pdf?id=r1lWUoA9FQ)
@@ -18,14 +18,12 @@ scheduled date: Feb. 1 - Feb. 7
 1. math setup: some data points lie in space $\Omega$. C partitions $\Omega$ into disjoint subsets. If there is $x,\hat{x}\in\Omega$ with $C(\hat{x})\neq c, C(x)=c$ and $d(x,\hat{x})\le\epsilon$.
 Then $\hat{x}$ is an adversarial example
 2. This paper goes on to use above settings to derive upon simple models such as half of a sphere. 
+
 #### branching points
 1. The math setup is weird. 
 It does not separate data points from the whole space, thus assuming that data points form a continuous space, rather than discrete points. In this condition, there will always be adversarial points due to denseness of real number.
 2. A better setup:
-    Let $\rm I\!R^n$ be the full image space with n = w*h
-    $\Omega_i$ is the set of discrete data points belonging to class i
-    C partitions $\rm I\!R^n$ into disjoing subspaces, each containing a $\Omega_i$ 
-    if any $x\in\Omega_i$ is closer to the boundary of C than $\epsilon$, there exist an adversarial example.
+Let $\rm I\!R^n$ be the full image space with n = w*h, $\Omega_i$ is the set of discrete data points belonging to class i. C partitions $\rm I\!R^n$ into disjoing subspaces, each containing a $\Omega_i$. if any $x\in\Omega_i$ is closer to the boundary of C than $\epsilon$, there exist an adversarial example.
     
 
 ## Adversarial Examples: Attacks and Defenses for Deep Learning
