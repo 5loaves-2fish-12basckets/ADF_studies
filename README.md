@@ -9,22 +9,25 @@ this is a 21 week plan to study Adversarial Attacks and Defences
 ### weekly schedule:
 <details open><summary>finished progress</summary>
 
----
-</details>
-
 * week 1  
 scheduled: Feb. 1- 7            
-    1. read basics  
+    
+    1. read basics:
     Are Adversarial Examples inevitable? https://openreview.net/pdf?id=r1lWUoA9FQ  
     Adversarial Examples: Attacks and Defenses for Deep Learning https://arxiv.org/pdf/1712.07107.pdf  
     Explaining and Harnessing Adversarial Examples https://arxiv.org/abs/1412.6572  
     Intriguing properties of neural networks  https://arxiv.org/abs/1312.6199  
     Towards Evaluating the Robustness of Neural Networks https://arxiv.org/abs/1608.04644  
     Towards Deep Learning Models Resistant to Adversarial Attacks https://arxiv.org/abs/1706.06083  
-
     2. follow tensorflow tutorials to learn tensorflow for future needs:  
     https://www.tensorflow.org/tutorials/  
     —> do learn and use ML part  
+
+finish date: Feb.19 [paper review](doc/paper_review/week01.md) [tensorflow tutorial:learn and use ML](doc/tensorflow/1_learn_and_use_ML)
+
+---
+</details>
+
 
 * week 2  
 scheduled: Feb. 8 - 14  
