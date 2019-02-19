@@ -3,12 +3,12 @@
 scheduled date: Feb. 1 - Feb. 7    
 
 > paper list:  
-[Are Adversarial Examples inevitable](#Are-Adversarial-Examples-inevitable)
-[Adversarial Examples: Attacks and Defenses for Deep Learning](#Adversarial-Examples-Attacks-and-Defenses-for-Deep-Learning)
-[Explaining and Harnessing Adversarial Examples](#Explaining-and-Harnessing-Adversarial-Examples)
-[Intriguing properties of neural networks](#Intriguing-properties-of-neural-networks)
-[Towards Evaluating the Robustness of Neural Networks](#Towards-Evaluating-the-Robustness-of-Neural-Networks)
-[Towards Deep Learning Models Resistant to Adversarial Attacks](#Towards-Deep-Learning-Models-Resistant-to-Adversarial-Attacks)
+[Are Adversarial Examples inevitable](#Are-Adversarial-Examples-inevitable)    
+[Adversarial Examples: Attacks and Defenses for Deep Learning](#Adversarial-Examples-Attacks-and-Defenses-for-Deep-Learning)    
+[Explaining and Harnessing Adversarial Examples](#Explaining-and-Harnessing-Adversarial-Examples)  
+[Intriguing properties of neural networks](#Intriguing-properties-of-neural-networks)    
+[Towards Evaluating the Robustness of Neural Networks](#Towards-Evaluating-the-Robustness-of-Neural-Networks)  
+[Towards Deep Learning Models Resistant to Adversarial Attacks](#Towards-Deep-Learning-Models-Resistant-to-Adversarial-Attacks)  
 
 ## Are Adversarial Examples inevitable? 
 [paper link](https://openreview.net/pdf?id=r1lWUoA9FQ)
@@ -18,14 +18,12 @@ scheduled date: Feb. 1 - Feb. 7
 1. math setup: some data points lie in space <img src="/doc/week01/tex/9432d83304c1eb0dcb05f092d30a767f.svg?invert_in_darkmode&sanitize=true" align=middle width=11.87217899999999pt height=22.465723500000017pt/>. C partitions <img src="/doc/week01/tex/9432d83304c1eb0dcb05f092d30a767f.svg?invert_in_darkmode&sanitize=true" align=middle width=11.87217899999999pt height=22.465723500000017pt/> into disjoint subsets. If there is <img src="/doc/week01/tex/e20fb9e8fe38c394ec5147172b66858f.svg?invert_in_darkmode&sanitize=true" align=middle width=58.05915389999999pt height=22.831056599999986pt/> with <img src="/doc/week01/tex/f4f80403985b065178a5b49565ade7a4.svg?invert_in_darkmode&sanitize=true" align=middle width=135.57884835pt height=24.65753399999998pt/> and <img src="/doc/week01/tex/eb0705ec2688793a826a8d4f1bc3adda.svg?invert_in_darkmode&sanitize=true" align=middle width=76.02725625pt height=24.65753399999998pt/>.
 Then <img src="/doc/week01/tex/f84e86b97e20e45cc17d297dc794b3e8.svg?invert_in_darkmode&sanitize=true" align=middle width=9.39498779999999pt height=22.831056599999986pt/> is an adversarial example
 2. This paper goes on to use above settings to derive upon simple models such as half of a sphere. 
+
 #### branching points
 1. The math setup is weird. 
 It does not separate data points from the whole space, thus assuming that data points form a continuous space, rather than discrete points. In this condition, there will always be adversarial points due to denseness of real number.
 2. A better setup:
-    Let $\rm I\!R^n$ be the full image space with n = w*h
-    $\Omega_i$ is the set of discrete data points belonging to class i
-    C partitions $\rm I\!R^n$ into disjoing subspaces, each containing a $\Omega_i$ 
-    if any $x\in\Omega_i$ is closer to the boundary of C than $\epsilon$, there exist an adversarial example.
+Let <img src="/doc/week01/tex/c92edb5070aa26dcc6479898701e3881.svg?invert_in_darkmode&sanitize=true" align=middle width=22.55721599999999pt height=22.465723500000017pt/> be the full image space with n = w*h, <img src="/doc/week01/tex/8fea593a0c14ea6d2a4d7d5bad42b661.svg?invert_in_darkmode&sanitize=true" align=middle width=16.52307854999999pt height=22.465723500000017pt/> is the set of discrete data points belonging to class i. C partitions <img src="/doc/week01/tex/c92edb5070aa26dcc6479898701e3881.svg?invert_in_darkmode&sanitize=true" align=middle width=22.55721599999999pt height=22.465723500000017pt/> into disjoing subspaces, each containing a <img src="/doc/week01/tex/8fea593a0c14ea6d2a4d7d5bad42b661.svg?invert_in_darkmode&sanitize=true" align=middle width=16.52307854999999pt height=22.465723500000017pt/>. if any <img src="/doc/week01/tex/7347bc852243ba765700bf6517dbb79a.svg?invert_in_darkmode&sanitize=true" align=middle width=46.00920389999999pt height=22.465723500000017pt/> is closer to the boundary of C than <img src="/doc/week01/tex/7ccca27b5ccc533a2dd72dc6fa28ed84.svg?invert_in_darkmode&sanitize=true" align=middle width=6.672392099999992pt height=14.15524440000002pt/>, there exist an adversarial example.
     
 
 ## Adversarial Examples: Attacks and Defenses for Deep Learning
