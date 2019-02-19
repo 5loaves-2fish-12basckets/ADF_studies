@@ -15,13 +15,11 @@ scheduled date: Feb. 1 - Feb. 7
 >This paper attemps to illustrate and characterize adversarial examples using mathematical models
 
 #### selected key points
-1. math setup: some data points lie in space <img src="/doc/week01/tex/9432d83304c1eb0dcb05f092d30a767f.svg?invert_in_darkmode&sanitize=true" align=middle width=11.87217899999999pt height=22.465723500000017pt/>. C partitions <img src="/doc/week01/tex/9432d83304c1eb0dcb05f092d30a767f.svg?invert_in_darkmode&sanitize=true" align=middle width=11.87217899999999pt height=22.465723500000017pt/> into disjoint subsets. If there is <img src="/doc/week01/tex/e20fb9e8fe38c394ec5147172b66858f.svg?invert_in_darkmode&sanitize=true" align=middle width=58.05915389999999pt height=22.831056599999986pt/> with <img src="/doc/week01/tex/f4f80403985b065178a5b49565ade7a4.svg?invert_in_darkmode&sanitize=true" align=middle width=135.57884835pt height=24.65753399999998pt/> and <img src="/doc/week01/tex/eb0705ec2688793a826a8d4f1bc3adda.svg?invert_in_darkmode&sanitize=true" align=middle width=76.02725625pt height=24.65753399999998pt/>.
-Then <img src="/doc/week01/tex/f84e86b97e20e45cc17d297dc794b3e8.svg?invert_in_darkmode&sanitize=true" align=middle width=9.39498779999999pt height=22.831056599999986pt/> is an adversarial example
+1. math setup: some data points lie in space <img src="/doc/week01/tex/9432d83304c1eb0dcb05f092d30a767f.svg?invert_in_darkmode&sanitize=true" align=middle width=11.87217899999999pt height=22.465723500000017pt/>. C partitions <img src="/doc/week01/tex/9432d83304c1eb0dcb05f092d30a767f.svg?invert_in_darkmode&sanitize=true" align=middle width=11.87217899999999pt height=22.465723500000017pt/> into disjoint subsets. If there is <img src="/doc/week01/tex/e20fb9e8fe38c394ec5147172b66858f.svg?invert_in_darkmode&sanitize=true" align=middle width=58.05915389999999pt height=22.831056599999986pt/> with <img src="/doc/week01/tex/f4f80403985b065178a5b49565ade7a4.svg?invert_in_darkmode&sanitize=true" align=middle width=135.57884835pt height=24.65753399999998pt/> and <img src="/doc/week01/tex/eb0705ec2688793a826a8d4f1bc3adda.svg?invert_in_darkmode&sanitize=true" align=middle width=76.02725625pt height=24.65753399999998pt/>. Then <img src="/doc/week01/tex/f84e86b97e20e45cc17d297dc794b3e8.svg?invert_in_darkmode&sanitize=true" align=middle width=9.39498779999999pt height=22.831056599999986pt/> is an adversarial example
 2. This paper goes on to use above settings to derive upon simple models such as half of a sphere. 
 
 #### branching points
-1. The math setup is weird. 
-It does not separate data points from the whole space, thus assuming that data points form a continuous space, rather than discrete points. In this condition, there will always be adversarial points due to denseness of real number.
+1. The math setup is weird. It does not separate data points from the whole space, thus assuming that data points form a continuous space, rather than discrete points. In this condition, there will always be adversarial points due to denseness of real number.
 2. A better setup: Let R be the full image space with n = w*h, <img src="/doc/week01/tex/8fea593a0c14ea6d2a4d7d5bad42b661.svg?invert_in_darkmode&sanitize=true" align=middle width=16.52307854999999pt height=22.465723500000017pt/> is the set of discrete data points belonging to class i. C partitions <img src="/doc/week01/tex/c92edb5070aa26dcc6479898701e3881.svg?invert_in_darkmode&sanitize=true" align=middle width=22.55721599999999pt height=22.465723500000017pt/> into disjoing subspaces, each containing a <img src="/doc/week01/tex/8fea593a0c14ea6d2a4d7d5bad42b661.svg?invert_in_darkmode&sanitize=true" align=middle width=16.52307854999999pt height=22.465723500000017pt/>. if any <img src="/doc/week01/tex/7347bc852243ba765700bf6517dbb79a.svg?invert_in_darkmode&sanitize=true" align=middle width=46.00920389999999pt height=22.465723500000017pt/> is closer to the boundary of C than <img src="/doc/week01/tex/7ccca27b5ccc533a2dd72dc6fa28ed84.svg?invert_in_darkmode&sanitize=true" align=middle width=6.672392099999992pt height=14.15524440000002pt/>, there exist an adversarial example.
 
 
@@ -40,6 +38,7 @@ It does not separate data points from the whole space, thus assuming that data p
     * Can also attack GAN, VAE to produce different result
     * printability can be considered when attempting for real world objects (ex glasses for adversarial on face detection)
     * Defence methods include reactive (detacting adversarial examples) and proactive (making models more robust)
+
 #### branching points
 1. Intriguing properties of neural networks is the first paper on adversarial attacks. Often refered by author as Szegedy et al. in this and other following papers
 2. As of July 2018, most defenses target adversarial examples in computer vision, leaving other areas (Natural Language, Malware detection) in need of research efforts. However it seems that there is currently no robust defence method.
@@ -76,13 +75,10 @@ The difference will still be large even if <img src="/doc/week01/tex/1d0496971a2
 
 #### selected key points
 1. (a layer in neural net forms a space of sementic meaning?) there is no distinction between individual high levl units and random linear combinations of high level unit. This suggest that it is the space rather than individual units that contains the semantic information in the high layers of neural networks
-2. let <img src="/doc/week01/tex/1dd66ca1cb582bf5f23f25067f3537c2.svg?invert_in_darkmode&sanitize=true" align=middle width=31.974965549999986pt height=24.65753399999998pt/> be activation values of some layer, <img src="/doc/week01/tex/332cc365a4987aacce0ead01b8bdcc0b.svg?invert_in_darkmode&sanitize=true" align=middle width=9.39498779999999pt height=14.15524440000002pt/> are the some input img
-expeiment show that for any random direction <img src="/doc/week01/tex/32202cea73dfe26c6e71d5983f049483.svg?invert_in_darkmode&sanitize=true" align=middle width=51.20619569999999pt height=22.465723500000017pt/> (including <img src="/doc/week01/tex/512eb3865853f108dbe121991aab0b00.svg?invert_in_darkmode&sanitize=true" align=middle width=12.30503669999999pt height=22.831056599999986pt/>) <img src="/doc/week01/tex/2a4b403f4f51aa9eaaca17a67b302385.svg?invert_in_darkmode&sanitize=true" align=middle width=154.87445655pt height=24.7161288pt/>  will select out examples semantically related to each other.
+2. let <img src="/doc/week01/tex/1dd66ca1cb582bf5f23f25067f3537c2.svg?invert_in_darkmode&sanitize=true" align=middle width=31.974965549999986pt height=24.65753399999998pt/> be activation values of some layer, <img src="/doc/week01/tex/332cc365a4987aacce0ead01b8bdcc0b.svg?invert_in_darkmode&sanitize=true" align=middle width=9.39498779999999pt height=14.15524440000002pt/> are the some input img. expeiment show that for any random direction <img src="/doc/week01/tex/32202cea73dfe26c6e71d5983f049483.svg?invert_in_darkmode&sanitize=true" align=middle width=51.20619569999999pt height=22.465723500000017pt/> (including <img src="/doc/week01/tex/512eb3865853f108dbe121991aab0b00.svg?invert_in_darkmode&sanitize=true" align=middle width=12.30503669999999pt height=22.831056599999986pt/>) <img src="/doc/week01/tex/2a4b403f4f51aa9eaaca17a67b302385.svg?invert_in_darkmode&sanitize=true" align=middle width=154.87445655pt height=24.7161288pt/>  will select out examples semantically related to each other.
 3. it is argued ("Learning deep architectures in ai") that the deep stack of non-linear layers between input output of neural net are a way for the model to encode a non-local generalization prior over the input-space. Which means it is possible for deep learning model to assign regions of input space without training example to correct class (ex same object with different viewpoint and are far in pixel space)
 4. local generalization, meaning that all data close to training data point will be assigned to same class is assumed above. However the assumption is false as this paper found that deep neural nets learn fairly discontinuous input-output mappings such that small perturbation can cause many networks to error (there are adversarial examples and it is transferable to different networks)
-5. To solve:  
-Minimize <img src="/doc/week01/tex/6bdcb9217783085e13142cedce026621.svg?invert_in_darkmode&sanitize=true" align=middle width=30.86392154999999pt height=24.65753399999998pt/> s.t. <img src="/doc/week01/tex/9fd483a72f24002bfe1c95644c2bbe92.svg?invert_in_darkmode&sanitize=true" align=middle width=196.40571059999996pt height=24.65753399999998pt/> approximate by box-constrained L-BFGS, i.e. by line-serach to find minimum c>0?
-Minimize <img src="/doc/week01/tex/eca2444947c7873ff3a5274708936010.svg?invert_in_darkmode&sanitize=true" align=middle width=143.10508244999997pt height=24.65753399999998pt/> subject to <img src="/doc/week01/tex/15cc94e7a887c9ed06460ad1818a9cca.svg?invert_in_darkmode&sanitize=true" align=middle width=101.99187239999999pt height=24.65753399999998pt/>
+5. To solve: Minimize <img src="/doc/week01/tex/6bdcb9217783085e13142cedce026621.svg?invert_in_darkmode&sanitize=true" align=middle width=30.86392154999999pt height=24.65753399999998pt/> s.t. <img src="/doc/week01/tex/9fd483a72f24002bfe1c95644c2bbe92.svg?invert_in_darkmode&sanitize=true" align=middle width=196.40571059999996pt height=24.65753399999998pt/> approximate by box-constrained L-BFGS, i.e. by line-serach to find minimum c>0? Minimize <img src="/doc/week01/tex/eca2444947c7873ff3a5274708936010.svg?invert_in_darkmode&sanitize=true" align=middle width=143.10508244999997pt height=24.65753399999998pt/> subject to <img src="/doc/week01/tex/15cc94e7a887c9ed06460ad1818a9cca.svg?invert_in_darkmode&sanitize=true" align=middle width=101.99187239999999pt height=24.65753399999998pt/>
 6. adding gaussian noise with same distance does not effect error as much as adversarial perturbation
 7. adversarial example generizes across models trained with disjoing subset within same training set (MNIST)
 8. Calculates upper bound of (possibility for adversarial example/instability of nerual net)? and suggests that 'simple regularization of the parameters, consisting in penalizing each Lipschitz bound, might help improve the generalisation  error of the networks'
@@ -98,10 +94,6 @@ Minimize <img src="/doc/week01/tex/eca2444947c7873ff3a5274708936010.svg?invert_i
 
 #### selected key points
 1. distillation: train second model with output of first model (it will be softer than one hot vector and contains info), reduces previous attack success rate from 95% to 0.5%
-2. <img src="/doc/week01/tex/d1d5ef430a55b92632050eab0b4a45fd.svg?invert_in_darkmode&sanitize=true" align=middle width=267.66034844999996pt height=58.97244539999998pt/>
-<img src="/doc/week01/tex/03e9cccda02af9b900ae6e17fb149d1f.svg?invert_in_darkmode&sanitize=true" align=middle width=35.91323504999999pt height=22.465723500000017pt/> how many pixel changed
-<img src="/doc/week01/tex/9ed5482ad04488c19a8da277a691b870.svg?invert_in_darkmode&sanitize=true" align=middle width=35.91323504999999pt height=22.465723500000017pt/> Euclidean distance
-<img src="/doc/week01/tex/3c3c2df637165e6d9fe8c32da59a1b75.svg?invert_in_darkmode&sanitize=true" align=middle width=42.465751349999984pt height=22.465723500000017pt/> maximum change of any coordinate
 3. prior attack methods: L-BFGS, FGSM, JSMA(greedy algorithm to pick pixel to modify), DeepFool(approximate as linear iteratively to move data point close to boundary)
 4. Following Szegedy et al.'s formulation for adversarial examples:
 mimimize <img src="/doc/week01/tex/e5c226c2b46c02c0dc2bad3fe69cbbba.svg?invert_in_darkmode&sanitize=true" align=middle width=80.96678699999998pt height=24.65753399999998pt/>
@@ -109,14 +101,6 @@ such that <img src="/doc/week01/tex/439ca16cf78f7660aa1a7e63ff6d4d9e.svg?invert_
 (C is classifyer func. t is some class [0,1] is range for img)
 5. because constraint C()... is highly non-linear, define f such that <img src="/doc/week01/tex/0e96665aed58340b4d8316bd4e87b827.svg?invert_in_darkmode&sanitize=true" align=middle width=229.53352784999996pt height=24.65753399999998pt/>  
 list of possible fs:  
-<img src="/doc/week01/tex/f8fcdb844475abcb6e81c735939ea17e.svg?invert_in_darkmode&sanitize=true" align=middle width=179.01034304999996pt height=24.7161288pt/>  
-<img src="/doc/week01/tex/76927801a0a8c4f158f1e7b7f869ce11.svg?invert_in_darkmode&sanitize=true" align=middle width=241.03244054999996pt height=26.17730939999998pt/>  
-<img src="/doc/week01/tex/f3e6fdd09258634dc345c11bb580818f.svg?invert_in_darkmode&sanitize=true" align=middle width=355.31151479999994pt height=25.936003499999995pt/>  
-<img src="/doc/week01/tex/6bb262db48aa512a6ddf0a5e7de5d3cf.svg?invert_in_darkmode&sanitize=true" align=middle width=173.53892159999998pt height=26.17730939999998pt/>  
-<img src="/doc/week01/tex/af86abad4c90a1640085cd69bdf48d6f.svg?invert_in_darkmode&sanitize=true" align=middle width=195.63932684999997pt height=24.7161288pt/>  
-<img src="/doc/week01/tex/d65636ecf70cccd58ec6d78a9b8bb1ee.svg?invert_in_darkmode&sanitize=true" align=middle width=240.11913255pt height=26.17730939999998pt/>  
-<img src="/doc/week01/tex/b6e12a45051e883a56085767d6fa7ffa.svg?invert_in_darkmode&sanitize=true" align=middle width=302.16083699999996pt height=26.17730939999998pt/>  
-<img src="/doc/week01/tex/6f1a6392b78010cb337131966ba9ec5e.svg?invert_in_darkmode&sanitize=true" align=middle width=339.809976pt height=26.17730939999998pt/> , loss is cross-entropy  
 6. Now we have:
 minimize <img src="/doc/week01/tex/e5c226c2b46c02c0dc2bad3fe69cbbba.svg?invert_in_darkmode&sanitize=true" align=middle width=80.96678699999998pt height=24.65753399999998pt/>  
 such that <img src="/doc/week01/tex/f7cf9bad9afe90a00bf212449465b80a.svg?invert_in_darkmode&sanitize=true" align=middle width=195.96798209999997pt height=24.65753399999998pt/>  
@@ -137,6 +121,20 @@ minimize <img src="/doc/week01/tex/47f896721d19c058e2365caa764d302e.svg?invert_i
 than train teacher network at T=T, teacher generate soft label, train student at T=T with soft label, test student at T=1  
 Thus T will meddle with gradients and previous attacks will fail  
  
+
+#### details notations and functions
+* <img src="/doc/week01/tex/d1d5ef430a55b92632050eab0b4a45fd.svg?invert_in_darkmode&sanitize=true" align=middle width=267.66034844999996pt height=58.97244539999998pt/>
+* <img src="/doc/week01/tex/03e9cccda02af9b900ae6e17fb149d1f.svg?invert_in_darkmode&sanitize=true" align=middle width=35.91323504999999pt height=22.465723500000017pt/> how many pixel changed
+* <img src="/doc/week01/tex/9ed5482ad04488c19a8da277a691b870.svg?invert_in_darkmode&sanitize=true" align=middle width=35.91323504999999pt height=22.465723500000017pt/> Euclidean distance
+* <img src="/doc/week01/tex/3c3c2df637165e6d9fe8c32da59a1b75.svg?invert_in_darkmode&sanitize=true" align=middle width=42.465751349999984pt height=22.465723500000017pt/> maximum change of any coordinate
+* <img src="/doc/week01/tex/f8fcdb844475abcb6e81c735939ea17e.svg?invert_in_darkmode&sanitize=true" align=middle width=179.01034304999996pt height=24.7161288pt/>  
+* <img src="/doc/week01/tex/76927801a0a8c4f158f1e7b7f869ce11.svg?invert_in_darkmode&sanitize=true" align=middle width=241.03244054999996pt height=26.17730939999998pt/>  
+* <img src="/doc/week01/tex/f3e6fdd09258634dc345c11bb580818f.svg?invert_in_darkmode&sanitize=true" align=middle width=355.31151479999994pt height=25.936003499999995pt/>  
+* <img src="/doc/week01/tex/6bb262db48aa512a6ddf0a5e7de5d3cf.svg?invert_in_darkmode&sanitize=true" align=middle width=173.53892159999998pt height=26.17730939999998pt/>  
+* <img src="/doc/week01/tex/af86abad4c90a1640085cd69bdf48d6f.svg?invert_in_darkmode&sanitize=true" align=middle width=195.63932684999997pt height=24.7161288pt/>  
+* <img src="/doc/week01/tex/d65636ecf70cccd58ec6d78a9b8bb1ee.svg?invert_in_darkmode&sanitize=true" align=middle width=240.11913255pt height=26.17730939999998pt/>  
+* <img src="/doc/week01/tex/b6e12a45051e883a56085767d6fa7ffa.svg?invert_in_darkmode&sanitize=true" align=middle width=302.16083699999996pt height=26.17730939999998pt/>  
+* <img src="/doc/week01/tex/6f1a6392b78010cb337131966ba9ec5e.svg?invert_in_darkmode&sanitize=true" align=middle width=339.809976pt height=26.17730939999998pt/> , loss is cross-entropy  
 
 #### branching points
 1. should checkout L-BFGS JSMA DeepFool in future
