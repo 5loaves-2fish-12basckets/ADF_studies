@@ -24,7 +24,7 @@ scheduled: Feb. 1- 7
     —> do learn and use ML part  
 
 <p align="right">  
-result: <a href="doc/paper_review/week01.md">paper review</a>, <a href="https://github.com/5loaves-2fish-12basckets/ADF_studies/tree/master/doc/tensorflow/1_Learn_and_use_ML">tensorflow tutorial: learn and use ML</a>
+result: <a href="doc/paper_review/week01.md">paper review</a>, <a href="https://github.com/5loaves-2fish-12basckets/ADF_studies/tree/master/doc/tensorflow/1_Learn_and_use_ML">tensorflow tutorial: learn and use ML</a><br>  
 finish date: Feb. 19
 </p>
  
