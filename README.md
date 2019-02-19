@@ -14,7 +14,7 @@ this is a 21 week plan to study Adversarial Attacks and Defences
 
 * week 1  
 scheduled: Feb. 1- 7            
-1. read basics  
+    1. read basics  
     Are Adversarial Examples inevitable? https://openreview.net/pdf?id=r1lWUoA9FQ  
     Adversarial Examples: Attacks and Defenses for Deep Learning https://arxiv.org/pdf/1712.07107.pdf  
     Explaining and Harnessing Adversarial Examples https://arxiv.org/abs/1412.6572  
@@ -22,26 +22,24 @@ scheduled: Feb. 1- 7
     Towards Evaluating the Robustness of Neural Networks https://arxiv.org/abs/1608.04644  
     Towards Deep Learning Models Resistant to Adversarial Attacks https://arxiv.org/abs/1706.06083  
 
-2. follow tensorflow tutorials to learn tensorflow for future needs:  
+    2. follow tensorflow tutorials to learn tensorflow for future needs:  
     https://www.tensorflow.org/tutorials/  
     —> do learn and use ML part  
 
 * week 2  
 scheduled: Feb. 8 - 14  
 
-1. follow references and citations of previous papers   
-2. write a review on these papers  
+    1. follow references and citations of previous papers   
+    2. write a review on these papers  
 
-3. follow tensorflow tutorials to learn tensorflow for future needs:  
+    3. follow tensorflow tutorials to learn tensorflow for future needs:  
     https://www.tensorflow.org/tutorials/  
     —> do Research and experiment part  
 
 * week 3  
 scheduled: Feb. 15 - 21  
 
-(investigate certified robustness and provable defense)  
-
-1. read  
+    1. read  (investigate certified robustness and provable defense)
 Certified Robustness to Adversarial Examples with Differential Privacy  
 https://arxiv.org/pdf/1802.03471.pdf  
 Towards Fast Computation of Certified Robustness for ReLU Networks  
@@ -51,27 +49,27 @@ https://arxiv.org/pdf/1711.00851.pdf
 Certified Robustness to Adversarial Examples with Differential Privacy  
 https://arxiv.org/pdf/1802.03471.pdf  
 
-2. understand code  
+    2. understand code  
 code for certified robustness for relu networks  
 https://github.com/huanzhang12/CertifiedReLURobustness  
 
-3. follow tensorflow tutorials to learn tensorflow for future needs:  
+    3. follow tensorflow tutorials to learn tensorflow for future needs:  
 https://www.tensorflow.org/tutorials/  
 —> do ML at production scale part   
 
 * week 4  
 scheduled: Feb. 22 - 28  
 
-1. follow references and citations of previous papers   
-2. write a review on these papers  
-3. follow tensorflow tutorials to learn tensorflow for future needs:  
+    1. follow references and citations of previous papers   
+    2. write a review on these papers  
+    3. follow tensorflow tutorials to learn tensorflow for future needs:  
 https://www.tensorflow.org/tutorials/  
 —> do generative models  
 
 * week 5  
 scheduled: Mar. 1 - 7  
 (investigate NIPS challange)  
-1. read   
+    1. read   
 Adversarial Attacks and Defences Competition  
 https://arxiv.org/pdf/1804.00097.pdf  
 Defense against Adversarial Attacks Using High-Level Representation Guided Denoiser  
@@ -86,44 +84,43 @@ Ensemble Adversarial Training: Attacks and Defenses
 https://arxiv.org/abs/1705.07204  
 (code https://github.com/sangxia/nips-2017-adversarial)  
 
-2. follow tensorflow tutorials to learn tensorflow for future needs:  
+    2. follow tensorflow tutorials to learn tensorflow for future needs:  
 https://www.tensorflow.org/tutorials/  
 —> do images  
 
 * week 6  
 scheduled: Mar. 8 - 14  
-1. follow references and citations of previous papers   
-2. write a review on these papers  
+    1. follow references and citations of previous papers   
+    2. write a review on these papers  
 
-3. follow tensorflow tutorials to learn tensorflow for future needs:  
+    3. follow tensorflow tutorials to learn tensorflow for future needs:  
 https://www.tensorflow.org/tutorials/  
 —> do sequences 
 
 * week 7  
 scheduled: Mar. 15 - 21  
-1. read  
+    1. read  
 universal adversarial patch   
 https://medium.com/deep-dimension/deep-learning-papers-review-universal-adversarial-patch-a5ad222a62d2  
 https://arxiv.org/pdf/1712.09665.pdf  
-
 decision based black box attack  
 https://openreview.net/pdf?id=SyZI0GWCZ  
 spacially transform adversarial examples https://openreview.net/pdf?id=HyydRMZC-  
 
-2. finalize previous reviews and finish writing review paper  
+    2. finalize previous reviews and finish writing review paper  
 
-3. follow tensorflow tutorials to learn tensorflow for future needs:  
+    3. follow tensorflow tutorials to learn tensorflow for future needs:  
 https://www.tensorflow.org/tutorials/  
 —> do Load data and data representation  
 
 * week 8  
 scheduled: Mar. 22 - 28  
 
-1. reproduce Boosting Adversarial Attacks with Momentum (in pytorch)  
+    1. reproduce Boosting Adversarial Attacks with Momentum (in pytorch)  
   
 * week 9  
 scheduled: Mar. 29 - Apr. 4 (there is holiday)  
-1. reproduce certified robustness (in pytorch)  
+    1. reproduce certified robustness (in pytorch)  
 test Boosting Adversarial Attacks with Momentum against certified robustness  
 
 \<full review of adversarial attacks and simple reproductions>  
