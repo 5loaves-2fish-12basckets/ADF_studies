@@ -1,6 +1,6 @@
 
 # week1 paper reviews for ADF
-scheduled date: Feb. 1 - Feb. 7    
+scheduled date: Feb. 1 - Feb. 7    [back to table](README.md);[back to schedule](https://github.com/5loaves-2fish-12basckets/ADF_studies/)
 
 > paper list:  
 [Are Adversarial Examples inevitable](#Are-Adversarial-Examples-inevitable)    
@@ -20,7 +20,7 @@ scheduled date: Feb. 1 - Feb. 7
 
 #### branching points
 1. The math setup is weird. It does not separate data points from the whole space, thus assuming that data points form a continuous space, rather than discrete points. In this condition, there will always be adversarial points due to denseness of real number.
-2. A better setup: Let R be the full image space with n = w*h, <img src="/doc/paper_review/tex/8fea593a0c14ea6d2a4d7d5bad42b661.svg?invert_in_darkmode&sanitize=true" align=middle width=16.52307854999999pt height=22.465723500000017pt/> is the set of discrete data points belonging to class i. C partitions <img src="/doc/paper_review/tex/c92edb5070aa26dcc6479898701e3881.svg?invert_in_darkmode&sanitize=true" align=middle width=22.55721599999999pt height=22.465723500000017pt/> into disjoing subspaces, each containing a <img src="/doc/paper_review/tex/8fea593a0c14ea6d2a4d7d5bad42b661.svg?invert_in_darkmode&sanitize=true" align=middle width=16.52307854999999pt height=22.465723500000017pt/>. if any <img src="/doc/paper_review/tex/7347bc852243ba765700bf6517dbb79a.svg?invert_in_darkmode&sanitize=true" align=middle width=46.00920389999999pt height=22.465723500000017pt/> is closer to the boundary of C than <img src="/doc/paper_review/tex/7ccca27b5ccc533a2dd72dc6fa28ed84.svg?invert_in_darkmode&sanitize=true" align=middle width=6.672392099999992pt height=14.15524440000002pt/>, there exist an adversarial example.
+2. A better setup: Let R be the full image space with n = w \*  h, <img src="/doc/paper_review/tex/013ff3aa3d1fccb154e67f0f3d48704c.svg?invert_in_darkmode&sanitize=true" align=middle width=23.45322374999999pt height=22.465723500000017pt/> is the set of discrete data points belonging to class i. C partitions <img src="/doc/paper_review/tex/c92edb5070aa26dcc6479898701e3881.svg?invert_in_darkmode&sanitize=true" align=middle width=22.55721599999999pt height=22.465723500000017pt/> into disjoing subspaces, each containing a <img src="/doc/paper_review/tex/8fea593a0c14ea6d2a4d7d5bad42b661.svg?invert_in_darkmode&sanitize=true" align=middle width=16.52307854999999pt height=22.465723500000017pt/>. if any <img src="/doc/paper_review/tex/7347bc852243ba765700bf6517dbb79a.svg?invert_in_darkmode&sanitize=true" align=middle width=46.00920389999999pt height=22.465723500000017pt/> is closer to the boundary of C than <img src="/doc/paper_review/tex/7ccca27b5ccc533a2dd72dc6fa28ed84.svg?invert_in_darkmode&sanitize=true" align=middle width=6.672392099999992pt height=14.15524440000002pt/>, there exist an adversarial example.
 
 
 ## Adversarial Examples: Attacks and Defenses for Deep Learning
