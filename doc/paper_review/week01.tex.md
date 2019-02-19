@@ -1,6 +1,6 @@
 
 # week1 paper reviews for ADF
-scheduled date: Feb. 1 - Feb. 7    
+scheduled date: Feb. 1 - Feb. 7    [back to table](README.md);[back to schedule](https://github.com/5loaves-2fish-12basckets/ADF_studies/)
 
 > paper list:  
 [Are Adversarial Examples inevitable](#Are-Adversarial-Examples-inevitable)    
@@ -20,7 +20,7 @@ scheduled date: Feb. 1 - Feb. 7
 
 #### branching points
 1. The math setup is weird. It does not separate data points from the whole space, thus assuming that data points form a continuous space, rather than discrete points. In this condition, there will always be adversarial points due to denseness of real number.
-2. A better setup: Let R be the full image space with n = w*h, $\Omega_i$ is the set of discrete data points belonging to class i. C partitions $\rm I\!R^n$ into disjoing subspaces, each containing a $\Omega_i$. if any $x\in\Omega_i$ is closer to the boundary of C than $\epsilon$, there exist an adversarial example.
+2. A better setup: Let R be the full image space with n = w \*  h, $\Omega\_i$ is the set of discrete data points belonging to class i. C partitions $\rm I\!R^n$ into disjoing subspaces, each containing a $\Omega_i$. if any $x\in\Omega_i$ is closer to the boundary of C than $\epsilon$, there exist an adversarial example.
 
 
 ## Adversarial Examples: Attacks and Defenses for Deep Learning
