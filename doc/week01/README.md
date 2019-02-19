@@ -103,16 +103,19 @@ Following Szegedy et al.'s formulation for adversarial examples:
 > mimimize <img src="/doc/week01/tex/e5c226c2b46c02c0dc2bad3fe69cbbba.svg?invert_in_darkmode&sanitize=true" align=middle width=80.96678699999998pt height=24.65753399999998pt/>
 > such that <img src="/doc/week01/tex/439ca16cf78f7660aa1a7e63ff6d4d9e.svg?invert_in_darkmode&sanitize=true" align=middle width=196.79209439999997pt height=24.65753399999998pt/>
 > (C is classifyer func. t is some class [0,1] is range for img)
+
 Now we have:  
 > minimize <img src="/doc/week01/tex/e5c226c2b46c02c0dc2bad3fe69cbbba.svg?invert_in_darkmode&sanitize=true" align=middle width=80.96678699999998pt height=24.65753399999998pt/>   
 > such that <img src="/doc/week01/tex/f7cf9bad9afe90a00bf212449465b80a.svg?invert_in_darkmode&sanitize=true" align=middle width=195.96798209999997pt height=24.65753399999998pt/>  
+
 alternatively:  
 > minimize <img src="/doc/week01/tex/4104b755748abdcf4f3311c7afeb45ec.svg?invert_in_darkmode&sanitize=true" align=middle width=180.06086009999999pt height=24.65753399999998pt/>  
 > such that <img src="/doc/week01/tex/f285dcd8e7161b763bfbb2171dface08.svg?invert_in_darkmode&sanitize=true" align=middle width=98.50816139999999pt height=24.65753399999998pt/>  
 > c>0, empirically smallest c has best result  
+
 finally <img src="/doc/week01/tex/4327ea69d9c5edcc8ddaf24f1d5b47e4.svg?invert_in_darkmode&sanitize=true" align=middle width=17.73978854999999pt height=22.465723500000017pt/> attack is:  
 > minimize <img src="/doc/week01/tex/0a17dc13a821746521ea193125ed35d8.svg?invert_in_darkmode&sanitize=true" align=middle width=336.08506800000004pt height=27.77565449999998pt/>  
-> <img src="/doc/week01/tex/8ddfab6febb07b5bffe0d1ebd4039120.svg?invert_in_darkmode&sanitize=true" align=middle width=335.4472308pt height=24.7161288pt/>
+> <img src="/doc/week01/tex/494fd63a41e62ecc73b5853d9cd09092.svg?invert_in_darkmode&sanitize=true" align=middle width=321.74841764999996pt height=24.7161288pt/>
 <img src="/doc/week01/tex/5c62da39aa7289df62d937cb24a31161.svg?invert_in_darkmode&sanitize=true" align=middle width=9.47111549999999pt height=14.15524440000002pt/> is for confidence level  
 <img src="/doc/week01/tex/cc96eb8a40f81e8514147d06c9e8ad92.svg?invert_in_darkmode&sanitize=true" align=middle width=17.73978854999999pt height=22.465723500000017pt/> attack is iteratively run <img src="/doc/week01/tex/4327ea69d9c5edcc8ddaf24f1d5b47e4.svg?invert_in_darkmode&sanitize=true" align=middle width=17.73978854999999pt height=22.465723500000017pt/> attack and remove pixel i with lower <img src="/doc/week01/tex/e60f762ec5757d0a022eb1845f4ee06b.svg?invert_in_darkmode&sanitize=true" align=middle width=103.01738699999997pt height=24.65753399999998pt/> value  
 <img src="/doc/week01/tex/3cc58aeae18bc28014beb059bf644895.svg?invert_in_darkmode&sanitize=true" align=middle width=24.292324649999987pt height=22.465723500000017pt/> attack is by  
