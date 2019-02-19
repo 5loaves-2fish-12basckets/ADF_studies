@@ -22,9 +22,8 @@ Then <img src="/doc/week01/tex/f84e86b97e20e45cc17d297dc794b3e8.svg?invert_in_da
 #### branching points
 1. The math setup is weird. 
 It does not separate data points from the whole space, thus assuming that data points form a continuous space, rather than discrete points. In this condition, there will always be adversarial points due to denseness of real number.
-2. A better setup:
-Let <img src="/doc/week01/tex/c92edb5070aa26dcc6479898701e3881.svg?invert_in_darkmode&sanitize=true" align=middle width=22.55721599999999pt height=22.465723500000017pt/> be the full image space with n = w*h, <img src="/doc/week01/tex/8fea593a0c14ea6d2a4d7d5bad42b661.svg?invert_in_darkmode&sanitize=true" align=middle width=16.52307854999999pt height=22.465723500000017pt/> is the set of discrete data points belonging to class i. C partitions <img src="/doc/week01/tex/c92edb5070aa26dcc6479898701e3881.svg?invert_in_darkmode&sanitize=true" align=middle width=22.55721599999999pt height=22.465723500000017pt/> into disjoing subspaces, each containing a <img src="/doc/week01/tex/8fea593a0c14ea6d2a4d7d5bad42b661.svg?invert_in_darkmode&sanitize=true" align=middle width=16.52307854999999pt height=22.465723500000017pt/>. if any <img src="/doc/week01/tex/7347bc852243ba765700bf6517dbb79a.svg?invert_in_darkmode&sanitize=true" align=middle width=46.00920389999999pt height=22.465723500000017pt/> is closer to the boundary of C than <img src="/doc/week01/tex/7ccca27b5ccc533a2dd72dc6fa28ed84.svg?invert_in_darkmode&sanitize=true" align=middle width=6.672392099999992pt height=14.15524440000002pt/>, there exist an adversarial example.
-    
+2. A better setup: Let R be the full image space with n = w*h, <img src="/doc/week01/tex/8fea593a0c14ea6d2a4d7d5bad42b661.svg?invert_in_darkmode&sanitize=true" align=middle width=16.52307854999999pt height=22.465723500000017pt/> is the set of discrete data points belonging to class i. C partitions <img src="/doc/week01/tex/c92edb5070aa26dcc6479898701e3881.svg?invert_in_darkmode&sanitize=true" align=middle width=22.55721599999999pt height=22.465723500000017pt/> into disjoing subspaces, each containing a <img src="/doc/week01/tex/8fea593a0c14ea6d2a4d7d5bad42b661.svg?invert_in_darkmode&sanitize=true" align=middle width=16.52307854999999pt height=22.465723500000017pt/>. if any <img src="/doc/week01/tex/7347bc852243ba765700bf6517dbb79a.svg?invert_in_darkmode&sanitize=true" align=middle width=46.00920389999999pt height=22.465723500000017pt/> is closer to the boundary of C than <img src="/doc/week01/tex/7ccca27b5ccc533a2dd72dc6fa28ed84.svg?invert_in_darkmode&sanitize=true" align=middle width=6.672392099999992pt height=14.15524440000002pt/>, there exist an adversarial example.
+
 
 ## Adversarial Examples: Attacks and Defenses for Deep Learning
 [paper link](https://arxiv.org/pdf/1712.07107.pdf)
@@ -63,14 +62,16 @@ The difference will still be large even if <img src="/doc/week01/tex/1d0496971a2
 5. Under linear view, adversarial example form broad subspaces. This is clearly proven by adjusting <img src="/doc/week01/tex/7ccca27b5ccc533a2dd72dc6fa28ed84.svg?invert_in_darkmode&sanitize=true" align=middle width=6.672392099999992pt height=14.15524440000002pt/> along the direction <img src="/doc/week01/tex/7c58fbe3788e939d4e33e1611e56bc65.svg?invert_in_darkmode&sanitize=true" align=middle width=130.73758335pt height=24.65753399999998pt/>
 6. Generative model (discriminate real/fake(adversarial) data) is useless. Ensembling is also useless
 7. Conclusion: linearity is key. Deep learning model is easy to train, and so is easy to attack.
+
 #### branching points
 1. nonlinear model families such as RBF networks can reduce vulnerability. What is RBF, why is it resistant to rubbish class examples!
 2. Is it true that robust deep model is definitely possible? should be able to do <img src="/doc/week01/tex/46386043b67d3c435f66d319d6c8c37a.svg?invert_in_darkmode&sanitize=true" align=middle width=73.20370364999998pt height=19.1781018pt/> A deep learning model that modifies data as it classifies
 3. If linearity is key, perhaps biologically neurons avoid this by being non-linear for single cell (full on/off) while linear for ensembles (how does ensemble and tuning curve work!!)
 4. Perhaps each point works for itself and does not consider whether it forms a reasonable picture along side other examples (reflecting on rubbish class example as noise imgs generated from FGSM from random values blank)
+
 ## Intriguing properties of neural networks 
 [paper link](https://arxiv.org/abs/1312.6199)
->The first paper on adversarial attack written by Szegedy et al.
+>The first paper on adversarial attack written by Szegedy et al.  
 >2 intriguing properties: a. layer forms a space of semantic meanings (rather than each unit in layer hold meaning) b. local generalization assumption is broken by adversarial examples.
 
 #### selected key points
@@ -79,15 +80,17 @@ The difference will still be large even if <img src="/doc/week01/tex/1d0496971a2
 expeiment show that for any random direction <img src="/doc/week01/tex/32202cea73dfe26c6e71d5983f049483.svg?invert_in_darkmode&sanitize=true" align=middle width=51.20619569999999pt height=22.465723500000017pt/> (including <img src="/doc/week01/tex/512eb3865853f108dbe121991aab0b00.svg?invert_in_darkmode&sanitize=true" align=middle width=12.30503669999999pt height=22.831056599999986pt/>) <img src="/doc/week01/tex/2a4b403f4f51aa9eaaca17a67b302385.svg?invert_in_darkmode&sanitize=true" align=middle width=154.87445655pt height=24.7161288pt/>  will select out examples semantically related to each other.
 3. it is argued ("Learning deep architectures in ai") that the deep stack of non-linear layers between input output of neural net are a way for the model to encode a non-local generalization prior over the input-space. Which means it is possible for deep learning model to assign regions of input space without training example to correct class (ex same object with different viewpoint and are far in pixel space)
 4. local generalization, meaning that all data close to training data point will be assigned to same class is assumed above. However the assumption is false as this paper found that deep neural nets learn fairly discontinuous input-output mappings such that small perturbation can cause many networks to error (there are adversarial examples and it is transferable to different networks)
-5. To solve:
+5. To solve:  
 Minimize <img src="/doc/week01/tex/6bdcb9217783085e13142cedce026621.svg?invert_in_darkmode&sanitize=true" align=middle width=30.86392154999999pt height=24.65753399999998pt/> s.t. <img src="/doc/week01/tex/9fd483a72f24002bfe1c95644c2bbe92.svg?invert_in_darkmode&sanitize=true" align=middle width=196.40571059999996pt height=24.65753399999998pt/> approximate by box-constrained L-BFGS, i.e. by line-serach to find minimum c>0?
 Minimize <img src="/doc/week01/tex/eca2444947c7873ff3a5274708936010.svg?invert_in_darkmode&sanitize=true" align=middle width=143.10508244999997pt height=24.65753399999998pt/> subject to <img src="/doc/week01/tex/15cc94e7a887c9ed06460ad1818a9cca.svg?invert_in_darkmode&sanitize=true" align=middle width=101.99187239999999pt height=24.65753399999998pt/>
 6. adding gaussian noise with same distance does not effect error as much as adversarial perturbation
 7. adversarial example generizes across models trained with disjoing subset within same training set (MNIST)
 8. Calculates upper bound of (possibility for adversarial example/instability of nerual net)? and suggests that 'simple regularization of the parameters, consisting in penalizing each Lipschitz bound, might help improve the generalisation  error of the networks'
+
 #### branching points
 1. what is L-BFGS?
 2. Lipschitz bound? Spectral Analysis of Unstability does not seem to give a clear answer.
+
 ## Towards Evaluating the Robustness of Neural Networks 
 [paper link](https://arxiv.org/abs/1608.04644)
 > Explain how defensive distillation protects from previous attacks and show that it is not robust against proposed attacks algorithms (C & W attacks for <img src="/doc/week01/tex/520cec487bc94f89c1e322ceb516a49d.svg?invert_in_darkmode&sanitize=true" align=middle width=76.02749549999999pt height=22.465723500000017pt/> distance metrics).
@@ -104,40 +107,42 @@ Minimize <img src="/doc/week01/tex/eca2444947c7873ff3a5274708936010.svg?invert_i
 mimimize <img src="/doc/week01/tex/e5c226c2b46c02c0dc2bad3fe69cbbba.svg?invert_in_darkmode&sanitize=true" align=middle width=80.96678699999998pt height=24.65753399999998pt/>
 such that <img src="/doc/week01/tex/439ca16cf78f7660aa1a7e63ff6d4d9e.svg?invert_in_darkmode&sanitize=true" align=middle width=196.79209439999997pt height=24.65753399999998pt/>
 (C is classifyer func. t is some class [0,1] is range for img)
-5. because constraint C()... is highly non-linear, define f such that <img src="/doc/week01/tex/0e96665aed58340b4d8316bd4e87b827.svg?invert_in_darkmode&sanitize=true" align=middle width=229.53352784999996pt height=24.65753399999998pt/>
-list of possible fs:
-<img src="/doc/week01/tex/f8fcdb844475abcb6e81c735939ea17e.svg?invert_in_darkmode&sanitize=true" align=middle width=179.01034304999996pt height=24.7161288pt/>
-<img src="/doc/week01/tex/76927801a0a8c4f158f1e7b7f869ce11.svg?invert_in_darkmode&sanitize=true" align=middle width=241.03244054999996pt height=26.17730939999998pt/>
-<img src="/doc/week01/tex/f3e6fdd09258634dc345c11bb580818f.svg?invert_in_darkmode&sanitize=true" align=middle width=355.31151479999994pt height=25.936003499999995pt/>
-<img src="/doc/week01/tex/6bb262db48aa512a6ddf0a5e7de5d3cf.svg?invert_in_darkmode&sanitize=true" align=middle width=173.53892159999998pt height=26.17730939999998pt/>
-<img src="/doc/week01/tex/af86abad4c90a1640085cd69bdf48d6f.svg?invert_in_darkmode&sanitize=true" align=middle width=195.63932684999997pt height=24.7161288pt/>
-<img src="/doc/week01/tex/d65636ecf70cccd58ec6d78a9b8bb1ee.svg?invert_in_darkmode&sanitize=true" align=middle width=240.11913255pt height=26.17730939999998pt/>
-<img src="/doc/week01/tex/b6e12a45051e883a56085767d6fa7ffa.svg?invert_in_darkmode&sanitize=true" align=middle width=302.16083699999996pt height=26.17730939999998pt/>
-<img src="/doc/week01/tex/6f1a6392b78010cb337131966ba9ec5e.svg?invert_in_darkmode&sanitize=true" align=middle width=339.809976pt height=26.17730939999998pt/> , loss is cross-entropy
+5. because constraint C()... is highly non-linear, define f such that <img src="/doc/week01/tex/0e96665aed58340b4d8316bd4e87b827.svg?invert_in_darkmode&sanitize=true" align=middle width=229.53352784999996pt height=24.65753399999998pt/>  
+list of possible fs:  
+<img src="/doc/week01/tex/f8fcdb844475abcb6e81c735939ea17e.svg?invert_in_darkmode&sanitize=true" align=middle width=179.01034304999996pt height=24.7161288pt/>  
+<img src="/doc/week01/tex/76927801a0a8c4f158f1e7b7f869ce11.svg?invert_in_darkmode&sanitize=true" align=middle width=241.03244054999996pt height=26.17730939999998pt/>  
+<img src="/doc/week01/tex/f3e6fdd09258634dc345c11bb580818f.svg?invert_in_darkmode&sanitize=true" align=middle width=355.31151479999994pt height=25.936003499999995pt/>  
+<img src="/doc/week01/tex/6bb262db48aa512a6ddf0a5e7de5d3cf.svg?invert_in_darkmode&sanitize=true" align=middle width=173.53892159999998pt height=26.17730939999998pt/>  
+<img src="/doc/week01/tex/af86abad4c90a1640085cd69bdf48d6f.svg?invert_in_darkmode&sanitize=true" align=middle width=195.63932684999997pt height=24.7161288pt/>  
+<img src="/doc/week01/tex/d65636ecf70cccd58ec6d78a9b8bb1ee.svg?invert_in_darkmode&sanitize=true" align=middle width=240.11913255pt height=26.17730939999998pt/>  
+<img src="/doc/week01/tex/b6e12a45051e883a56085767d6fa7ffa.svg?invert_in_darkmode&sanitize=true" align=middle width=302.16083699999996pt height=26.17730939999998pt/>  
+<img src="/doc/week01/tex/6f1a6392b78010cb337131966ba9ec5e.svg?invert_in_darkmode&sanitize=true" align=middle width=339.809976pt height=26.17730939999998pt/> , loss is cross-entropy  
 6. Now we have:
-minimize <img src="/doc/week01/tex/e5c226c2b46c02c0dc2bad3fe69cbbba.svg?invert_in_darkmode&sanitize=true" align=middle width=80.96678699999998pt height=24.65753399999998pt/>
-such that <img src="/doc/week01/tex/f7cf9bad9afe90a00bf212449465b80a.svg?invert_in_darkmode&sanitize=true" align=middle width=195.96798209999997pt height=24.65753399999998pt/>
-alternatively:
-minimize <img src="/doc/week01/tex/4104b755748abdcf4f3311c7afeb45ec.svg?invert_in_darkmode&sanitize=true" align=middle width=180.06086009999999pt height=24.65753399999998pt/>
-such that <img src="/doc/week01/tex/f285dcd8e7161b763bfbb2171dface08.svg?invert_in_darkmode&sanitize=true" align=middle width=98.50816139999999pt height=24.65753399999998pt/>
-c>0, empirically smallest c has best result
+minimize <img src="/doc/week01/tex/e5c226c2b46c02c0dc2bad3fe69cbbba.svg?invert_in_darkmode&sanitize=true" align=middle width=80.96678699999998pt height=24.65753399999998pt/>  
+such that <img src="/doc/week01/tex/f7cf9bad9afe90a00bf212449465b80a.svg?invert_in_darkmode&sanitize=true" align=middle width=195.96798209999997pt height=24.65753399999998pt/>  
+alternatively:  
+minimize <img src="/doc/week01/tex/4104b755748abdcf4f3311c7afeb45ec.svg?invert_in_darkmode&sanitize=true" align=middle width=180.06086009999999pt height=24.65753399999998pt/>  
+such that <img src="/doc/week01/tex/f285dcd8e7161b763bfbb2171dface08.svg?invert_in_darkmode&sanitize=true" align=middle width=98.50816139999999pt height=24.65753399999998pt/>  
+c>0, empirically smallest c has best result  
 7. The paper used constrants to ensure that modification yieds valid images (discrete pixel (0-255), change of variable<img src="/doc/week01/tex/955efaa45bc69d8793f5934a85d784ef.svg?invert_in_darkmode&sanitize=true" align=middle width=183.33056774999997pt height=27.77565449999998pt/>)
-8. final <img src="/doc/week01/tex/4327ea69d9c5edcc8ddaf24f1d5b47e4.svg?invert_in_darkmode&sanitize=true" align=middle width=17.73978854999999pt height=22.465723500000017pt/> attack is:
-minimize <img src="/doc/week01/tex/0a17dc13a821746521ea193125ed35d8.svg?invert_in_darkmode&sanitize=true" align=middle width=336.08506800000004pt height=27.77565449999998pt/>
-<img src="/doc/week01/tex/8ddfab6febb07b5bffe0d1ebd4039120.svg?invert_in_darkmode&sanitize=true" align=middle width=335.4472308pt height=24.7161288pt/>
-<img src="/doc/week01/tex/5c62da39aa7289df62d937cb24a31161.svg?invert_in_darkmode&sanitize=true" align=middle width=9.47111549999999pt height=14.15524440000002pt/> is for confidence level
-<img src="/doc/week01/tex/cc96eb8a40f81e8514147d06c9e8ad92.svg?invert_in_darkmode&sanitize=true" align=middle width=17.73978854999999pt height=22.465723500000017pt/> attack is iteratively run <img src="/doc/week01/tex/4327ea69d9c5edcc8ddaf24f1d5b47e4.svg?invert_in_darkmode&sanitize=true" align=middle width=17.73978854999999pt height=22.465723500000017pt/> attack and remove pixel i with lower <img src="/doc/week01/tex/e60f762ec5757d0a022eb1845f4ee06b.svg?invert_in_darkmode&sanitize=true" align=middle width=103.01738699999997pt height=24.65753399999998pt/> value
-<img src="/doc/week01/tex/3cc58aeae18bc28014beb059bf644895.svg?invert_in_darkmode&sanitize=true" align=middle width=24.292324649999987pt height=22.465723500000017pt/> attack is by
-minimize <img src="/doc/week01/tex/47f896721d19c058e2365caa764d302e.svg?invert_in_darkmode&sanitize=true" align=middle width=191.19365429999996pt height=28.92705090000002pt/>, with <img src="/doc/week01/tex/feea067ecd7d1c19447f32aec232adf7.svg?invert_in_darkmode&sanitize=true" align=middle width=60.18831719999999pt height=21.18721440000001pt/> after each successful iteration 
-9. defensive distillation use
-<p align="center"><img src="/doc/week01/tex/e2c6d52723e45fd6f7d466fc546146f4.svg?invert_in_darkmode&sanitize=true" align=middle width=197.73956565pt height=44.16107355pt/></p>
-than train teacher network at T=T, teacher generate soft label, train student at T=T with soft label, test student at T=1
-Thus T will meddle with gradients and previous attacks will fail
+8. final <img src="/doc/week01/tex/4327ea69d9c5edcc8ddaf24f1d5b47e4.svg?invert_in_darkmode&sanitize=true" align=middle width=17.73978854999999pt height=22.465723500000017pt/> attack is:  
+minimize <img src="/doc/week01/tex/0a17dc13a821746521ea193125ed35d8.svg?invert_in_darkmode&sanitize=true" align=middle width=336.08506800000004pt height=27.77565449999998pt/>  
+<img src="/doc/week01/tex/8ddfab6febb07b5bffe0d1ebd4039120.svg?invert_in_darkmode&sanitize=true" align=middle width=335.4472308pt height=24.7161288pt/>  
+<img src="/doc/week01/tex/5c62da39aa7289df62d937cb24a31161.svg?invert_in_darkmode&sanitize=true" align=middle width=9.47111549999999pt height=14.15524440000002pt/> is for confidence level  
+<img src="/doc/week01/tex/cc96eb8a40f81e8514147d06c9e8ad92.svg?invert_in_darkmode&sanitize=true" align=middle width=17.73978854999999pt height=22.465723500000017pt/> attack is iteratively run <img src="/doc/week01/tex/4327ea69d9c5edcc8ddaf24f1d5b47e4.svg?invert_in_darkmode&sanitize=true" align=middle width=17.73978854999999pt height=22.465723500000017pt/> attack and remove pixel i with lower <img src="/doc/week01/tex/e60f762ec5757d0a022eb1845f4ee06b.svg?invert_in_darkmode&sanitize=true" align=middle width=103.01738699999997pt height=24.65753399999998pt/> value  
+<img src="/doc/week01/tex/3cc58aeae18bc28014beb059bf644895.svg?invert_in_darkmode&sanitize=true" align=middle width=24.292324649999987pt height=22.465723500000017pt/> attack is by  
+minimize <img src="/doc/week01/tex/47f896721d19c058e2365caa764d302e.svg?invert_in_darkmode&sanitize=true" align=middle width=191.19365429999996pt height=28.92705090000002pt/>, with <img src="/doc/week01/tex/feea067ecd7d1c19447f32aec232adf7.svg?invert_in_darkmode&sanitize=true" align=middle width=60.18831719999999pt height=21.18721440000001pt/> after each successful iteration   
+9. defensive distillation use  
+<p align="center"><img src="/doc/week01/tex/e2c6d52723e45fd6f7d466fc546146f4.svg?invert_in_darkmode&sanitize=true" align=middle width=197.73956565pt height=44.16107355pt/></p>  
+than train teacher network at T=T, teacher generate soft label, train student at T=T with soft label, test student at T=1  
+Thus T will meddle with gradients and previous attacks will fail  
  
+
 #### branching points
 1. should checkout L-BFGS JSMA DeepFool in future
 2. this is a good example of formulating math to produce deep learning success!
 3. not clear on how the last part on gradients yet!
+
 ## Towards Deep Learning Models Resistant to Adversarial Attacks
 [paper link](https://arxiv.org/abs/1706.06083)
 > Believes that size is all, if size is big enough adversarial proof networks is achievable
@@ -151,6 +156,7 @@ Thus T will meddle with gradients and previous attacks will fail
 which is to minimize (adversarial loss)
 4. experiment PGD with multiple random restarts find that adversarail loss tend plateaus around same value, (the fact that deep learning plateaus around same value for training, is believed to have multiple same value local minima)
 5. need to solve saddle point problem + show that value is small
+
 #### branching points
 1. which paper beats this??
 2. Danskin's theorm states that gradients at inner maximizers corresponds to descent directions for the saddle point problem
