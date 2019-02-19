@@ -154,8 +154,7 @@ which is to minimize (adversarial loss)
 
 
 
-$f(x')=\max(\max{Z(x')_i:i\neq t}-Z(x')_t,-\kappa)$  
-$\kappa$ is for confidence level  
+$f(x')=\max(\max{Z(x')_i:i\neq t}-Z(x')_t,-\kappa)$, $\kappa$ is for confidence level  
 $L_0$ attack is iteratively run $L_2$ attack and remove pixel i with lower $\nabla f(x+\delta)_i\cdot\delta_i$ value  
 $L_\infty$ attack is by  
 minimize $c\cdot f(x+\delta)+\sum\limits_i[(\delta_i-\tau)^+]$, with $\tau*=0.9$ after each successful iteration   
