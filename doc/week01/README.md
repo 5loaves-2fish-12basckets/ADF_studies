@@ -94,35 +94,34 @@ The difference will still be large even if <img src="/doc/week01/tex/1d0496971a2
 
 #### selected key points
 1. distillation: train second model with output of first model (it will be softer than one hot vector and contains info), reduces previous attack success rate from 95% to 0.5%
-3. prior attack methods: L-BFGS, FGSM, JSMA(greedy algorithm to pick pixel to modify), DeepFool(approximate as linear iteratively to move data point close to boundary)
-4. Following Szegedy et al.'s formulation for adversarial examples:
-mimimize <img src="/doc/week01/tex/e5c226c2b46c02c0dc2bad3fe69cbbba.svg?invert_in_darkmode&sanitize=true" align=middle width=80.96678699999998pt height=24.65753399999998pt/>
-such that <img src="/doc/week01/tex/439ca16cf78f7660aa1a7e63ff6d4d9e.svg?invert_in_darkmode&sanitize=true" align=middle width=196.79209439999997pt height=24.65753399999998pt/>
-(C is classifyer func. t is some class [0,1] is range for img)
-5. because constraint C()... is highly non-linear, define f such that <img src="/doc/week01/tex/0e96665aed58340b4d8316bd4e87b827.svg?invert_in_darkmode&sanitize=true" align=middle width=229.53352784999996pt height=24.65753399999998pt/>  
-list of possible fs:  
-6. Now we have:
-minimize <img src="/doc/week01/tex/e5c226c2b46c02c0dc2bad3fe69cbbba.svg?invert_in_darkmode&sanitize=true" align=middle width=80.96678699999998pt height=24.65753399999998pt/>  
-such that <img src="/doc/week01/tex/f7cf9bad9afe90a00bf212449465b80a.svg?invert_in_darkmode&sanitize=true" align=middle width=195.96798209999997pt height=24.65753399999998pt/>  
+2. prior attack methods: L-BFGS, FGSM, JSMA(greedy algorithm to pick pixel to modify), DeepFool(approximate as linear iteratively to move data point close to boundary)
+3. because constraint C()... is highly non-linear, define f such that <img src="/doc/week01/tex/0e96665aed58340b4d8316bd4e87b827.svg?invert_in_darkmode&sanitize=true" align=middle width=229.53352784999996pt height=24.65753399999998pt/>. (all possible functions listed below)
+4. The paper used constrants to ensure that modification yieds valid images (discrete pixel (0-255), change of variable<img src="/doc/week01/tex/955efaa45bc69d8793f5934a85d784ef.svg?invert_in_darkmode&sanitize=true" align=middle width=183.33056774999997pt height=27.77565449999998pt/>)
+ 
+#### formulations
+Following Szegedy et al.'s formulation for adversarial examples:  
+> mimimize <img src="/doc/week01/tex/e5c226c2b46c02c0dc2bad3fe69cbbba.svg?invert_in_darkmode&sanitize=true" align=middle width=80.96678699999998pt height=24.65753399999998pt/>
+> such that <img src="/doc/week01/tex/439ca16cf78f7660aa1a7e63ff6d4d9e.svg?invert_in_darkmode&sanitize=true" align=middle width=196.79209439999997pt height=24.65753399999998pt/>
+> (C is classifyer func. t is some class [0,1] is range for img)
+Now we have:  
+> minimize <img src="/doc/week01/tex/e5c226c2b46c02c0dc2bad3fe69cbbba.svg?invert_in_darkmode&sanitize=true" align=middle width=80.96678699999998pt height=24.65753399999998pt/>   
+> such that <img src="/doc/week01/tex/f7cf9bad9afe90a00bf212449465b80a.svg?invert_in_darkmode&sanitize=true" align=middle width=195.96798209999997pt height=24.65753399999998pt/>  
 alternatively:  
-minimize <img src="/doc/week01/tex/4104b755748abdcf4f3311c7afeb45ec.svg?invert_in_darkmode&sanitize=true" align=middle width=180.06086009999999pt height=24.65753399999998pt/>  
-such that <img src="/doc/week01/tex/f285dcd8e7161b763bfbb2171dface08.svg?invert_in_darkmode&sanitize=true" align=middle width=98.50816139999999pt height=24.65753399999998pt/>  
-c>0, empirically smallest c has best result  
-7. The paper used constrants to ensure that modification yieds valid images (discrete pixel (0-255), change of variable<img src="/doc/week01/tex/955efaa45bc69d8793f5934a85d784ef.svg?invert_in_darkmode&sanitize=true" align=middle width=183.33056774999997pt height=27.77565449999998pt/>)
-8. final <img src="/doc/week01/tex/4327ea69d9c5edcc8ddaf24f1d5b47e4.svg?invert_in_darkmode&sanitize=true" align=middle width=17.73978854999999pt height=22.465723500000017pt/> attack is:  
-minimize <img src="/doc/week01/tex/0a17dc13a821746521ea193125ed35d8.svg?invert_in_darkmode&sanitize=true" align=middle width=336.08506800000004pt height=27.77565449999998pt/>  
-<img src="/doc/week01/tex/8ddfab6febb07b5bffe0d1ebd4039120.svg?invert_in_darkmode&sanitize=true" align=middle width=335.4472308pt height=24.7161288pt/>  
+> minimize <img src="/doc/week01/tex/4104b755748abdcf4f3311c7afeb45ec.svg?invert_in_darkmode&sanitize=true" align=middle width=180.06086009999999pt height=24.65753399999998pt/>  
+> such that <img src="/doc/week01/tex/f285dcd8e7161b763bfbb2171dface08.svg?invert_in_darkmode&sanitize=true" align=middle width=98.50816139999999pt height=24.65753399999998pt/>  
+> c>0, empirically smallest c has best result  
+finally <img src="/doc/week01/tex/4327ea69d9c5edcc8ddaf24f1d5b47e4.svg?invert_in_darkmode&sanitize=true" align=middle width=17.73978854999999pt height=22.465723500000017pt/> attack is:  
+> minimize <img src="/doc/week01/tex/0a17dc13a821746521ea193125ed35d8.svg?invert_in_darkmode&sanitize=true" align=middle width=336.08506800000004pt height=27.77565449999998pt/>  
+> <img src="/doc/week01/tex/8ddfab6febb07b5bffe0d1ebd4039120.svg?invert_in_darkmode&sanitize=true" align=middle width=335.4472308pt height=24.7161288pt/>
 <img src="/doc/week01/tex/5c62da39aa7289df62d937cb24a31161.svg?invert_in_darkmode&sanitize=true" align=middle width=9.47111549999999pt height=14.15524440000002pt/> is for confidence level  
 <img src="/doc/week01/tex/cc96eb8a40f81e8514147d06c9e8ad92.svg?invert_in_darkmode&sanitize=true" align=middle width=17.73978854999999pt height=22.465723500000017pt/> attack is iteratively run <img src="/doc/week01/tex/4327ea69d9c5edcc8ddaf24f1d5b47e4.svg?invert_in_darkmode&sanitize=true" align=middle width=17.73978854999999pt height=22.465723500000017pt/> attack and remove pixel i with lower <img src="/doc/week01/tex/e60f762ec5757d0a022eb1845f4ee06b.svg?invert_in_darkmode&sanitize=true" align=middle width=103.01738699999997pt height=24.65753399999998pt/> value  
 <img src="/doc/week01/tex/3cc58aeae18bc28014beb059bf644895.svg?invert_in_darkmode&sanitize=true" align=middle width=24.292324649999987pt height=22.465723500000017pt/> attack is by  
-minimize <img src="/doc/week01/tex/47f896721d19c058e2365caa764d302e.svg?invert_in_darkmode&sanitize=true" align=middle width=191.19365429999996pt height=28.92705090000002pt/>, with <img src="/doc/week01/tex/feea067ecd7d1c19447f32aec232adf7.svg?invert_in_darkmode&sanitize=true" align=middle width=60.18831719999999pt height=21.18721440000001pt/> after each successful iteration   
-9. defensive distillation use  
-<p align="center"><img src="/doc/week01/tex/e2c6d52723e45fd6f7d466fc546146f4.svg?invert_in_darkmode&sanitize=true" align=middle width=197.73956565pt height=44.16107355pt/></p>  
+> minimize <img src="/doc/week01/tex/47f896721d19c058e2365caa764d302e.svg?invert_in_darkmode&sanitize=true" align=middle width=191.19365429999996pt height=28.92705090000002pt/>, with <img src="/doc/week01/tex/feea067ecd7d1c19447f32aec232adf7.svg?invert_in_darkmode&sanitize=true" align=middle width=60.18831719999999pt height=21.18721440000001pt/> after each successful iteration   
+defensive distillation use <img src="/doc/week01/tex/cf732c8a45671c8c0adfd364b63527f9.svg?invert_in_darkmode&sanitize=true" align=middle width=186.71656904999998pt height=35.19487620000001pt/>  
 than train teacher network at T=T, teacher generate soft label, train student at T=T with soft label, test student at T=1  
 Thus T will meddle with gradients and previous attacks will fail  
- 
 
-#### details notations and functions
+#### list of notations and functions
 * <img src="/doc/week01/tex/d1d5ef430a55b92632050eab0b4a45fd.svg?invert_in_darkmode&sanitize=true" align=middle width=267.66034844999996pt height=58.97244539999998pt/>
 * <img src="/doc/week01/tex/03e9cccda02af9b900ae6e17fb149d1f.svg?invert_in_darkmode&sanitize=true" align=middle width=35.91323504999999pt height=22.465723500000017pt/> how many pixel changed
 * <img src="/doc/week01/tex/9ed5482ad04488c19a8da277a691b870.svg?invert_in_darkmode&sanitize=true" align=middle width=35.91323504999999pt height=22.465723500000017pt/> Euclidean distance
