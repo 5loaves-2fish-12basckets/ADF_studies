@@ -94,35 +94,34 @@ $\eta=\epsilon sign(\nabla_xJ(\theta,x,y))$, J is the cost function
 
 #### selected key points
 1. distillation: train second model with output of first model (it will be softer than one hot vector and contains info), reduces previous attack success rate from 95% to 0.5%
-3. prior attack methods: L-BFGS, FGSM, JSMA(greedy algorithm to pick pixel to modify), DeepFool(approximate as linear iteratively to move data point close to boundary)
-4. Following Szegedy et al.'s formulation for adversarial examples:
-mimimize $D(x,x+\delta)$
-such that $C(x+\delta)=t, x+\delta\in [0,1]^n$
-(C is classifyer func. t is some class [0,1] is range for img)
-5. because constraint C()... is highly non-linear, define f such that $C(x+\delta)=t \iff f(x+\delta)\le0$  
-list of possible fs:  
-6. Now we have:
-minimize $D(x,x+\delta)$  
-such that $f(x+\delta\le 0), x+\delta\in[0,1]^n$  
+2. prior attack methods: L-BFGS, FGSM, JSMA(greedy algorithm to pick pixel to modify), DeepFool(approximate as linear iteratively to move data point close to boundary)
+3. because constraint C()... is highly non-linear, define f such that $C(x+\delta)=t \iff f(x+\delta)\le0$. (all possible functions listed below)
+4. The paper used constrants to ensure that modification yieds valid images (discrete pixel (0-255), change of variable$\delta_i=\frac{1}{2}(\tanh(w_i)+1)-x_i$)
+ 
+#### formulations
+Following Szegedy et al.'s formulation for adversarial examples:  
+> mimimize $D(x,x+\delta)$
+> such that $C(x+\delta)=t, x+\delta\in [0,1]^n$
+> (C is classifyer func. t is some class [0,1] is range for img)
+Now we have:  
+> minimize $D(x,x+\delta)$   
+> such that $f(x+\delta\le 0), x+\delta\in[0,1]^n$  
 alternatively:  
-minimize $D(x,x+\delta)+c\cdot f(x+\delta)$  
-such that $x+\delta\in[0,1]^n$  
-c>0, empirically smallest c has best result  
-7. The paper used constrants to ensure that modification yieds valid images (discrete pixel (0-255), change of variable$\delta_i=\frac{1}{2}(\tanh(w_i)+1)-x_i$)
-8. final $L_2$ attack is:  
-minimize $\Vert\frac{1}{2}(tanh(w)+1)-x\Vert^2_2+c\cdot f(\frac{1}{2}(tanh(w)+1))$  
-$f(x')=\max(\max\{Z(x')_i:i\neq t\}-Z(x')_t,-\kappa)$  
+> minimize $D(x,x+\delta)+c\cdot f(x+\delta)$  
+> such that $x+\delta\in[0,1]^n$  
+> c>0, empirically smallest c has best result  
+finally $L_2$ attack is:  
+> minimize $\Vert\frac{1}{2}(tanh(w)+1)-x\Vert^2_2+c\cdot f(\frac{1}{2}(tanh(w)+1))$  
+> $f(x')=\max(\max\{Z(x')_i:i\neq t\}-Z(x')_t,-\kappa)$
 $\kappa$ is for confidence level  
 $L_0$ attack is iteratively run $L_2$ attack and remove pixel i with lower $\nabla f(x+\delta)_i\cdot\delta_i$ value  
 $L_\infty$ attack is by  
-minimize $c\cdot f(x+\delta)+\sum\limits_i[(\delta_i-\tau)^+]$, with $\tau*=0.9$ after each successful iteration   
-9. defensive distillation use  
-$$softmax(x,T)_i=\frac{e^{x_i/T}}{\sum_je^x_j/T}$$  
+> minimize $c\cdot f(x+\delta)+\sum\limits_i[(\delta_i-\tau)^+]$, with $\tau*=0.9$ after each successful iteration   
+defensive distillation use $softmax(x,T)_i=\frac{e^{x_i/T}}{\sum_je^x_j/T}$  
 than train teacher network at T=T, teacher generate soft label, train student at T=T with soft label, test student at T=1  
 Thus T will meddle with gradients and previous attacks will fail  
- 
 
-#### details notations and functions
+#### list of notations and functions
 * $L_p\equiv\Vert x-x'\Vert_p\equiv\bigg(\sum\limits_{i=1}^n|(x-x')_i|^p\bigg)^\frac{1}{p}$
 * $L_0=$ how many pixel changed
 * $L_2=$ Euclidean distance
