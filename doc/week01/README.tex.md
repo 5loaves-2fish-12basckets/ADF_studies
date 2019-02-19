@@ -103,16 +103,19 @@ Following Szegedy et al.'s formulation for adversarial examples:
 > mimimize $D(x,x+\delta)$
 > such that $C(x+\delta)=t, x+\delta\in [0,1]^n$
 > (C is classifyer func. t is some class [0,1] is range for img)
+
 Now we have:  
 > minimize $D(x,x+\delta)$   
 > such that $f(x+\delta\le 0), x+\delta\in[0,1]^n$  
+
 alternatively:  
 > minimize $D(x,x+\delta)+c\cdot f(x+\delta)$  
 > such that $x+\delta\in[0,1]^n$  
 > c>0, empirically smallest c has best result  
+
 finally $L_2$ attack is:  
 > minimize $\Vert\frac{1}{2}(tanh(w)+1)-x\Vert^2_2+c\cdot f(\frac{1}{2}(tanh(w)+1))$  
-> $f(x')=\max(\max\{Z(x')_i:i\neq t\}-Z(x')_t,-\kappa)$
+> $f(x')=\max(\max{Z(x')_i:i\neq t}-Z(x')_t,-\kappa)$
 $\kappa$ is for confidence level  
 $L_0$ attack is iteratively run $L_2$ attack and remove pixel i with lower $\nabla f(x+\delta)_i\cdot\delta_i$ value  
 $L_\infty$ attack is by  
