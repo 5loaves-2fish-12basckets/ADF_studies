@@ -23,7 +23,8 @@ scheduled: Feb. 1- 7
     https://www.tensorflow.org/tutorials/  
     —> do learn and use ML part  
 
-finish date: Feb.19 [paper review](doc/paper_review/week01.md) [tensorflow tutorial:learn and use ML](doc/tensorflow/1_learn_and_use_ML)
+result: [paper review](doc/paper_review/week01.md), [tensorflow tutorial:learn and use ML](doc/tensorflow/1_learn_and_use_ML)
+finish date: Feb.19 
 
 ---
 </details>
