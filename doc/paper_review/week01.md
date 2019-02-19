@@ -1,9 +1,9 @@
 
 # week1 paper reviews for ADF
 scheduled date: Feb. 1 - Feb. 7  
-<div style="text-align: right">  
+<p align="right">  
 <a href="README.md">back to table</a>;<a href="https://github.com/5loaves-2fish-12basckets/ADF_studies/">back to schedule</a>
-</div>
+</p>
  
 > paper list:  
 [Are Adversarial Examples inevitable](#Are-Adversarial-Examples-inevitable)    
