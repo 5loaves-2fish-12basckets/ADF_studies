@@ -31,3 +31,10 @@ from [tensorflow using gpu guide](https://www.tensorflow.org/guide/using_gpu)
 from keras import backend as k
 k.tensorflow_backend.set_session(tf.Session(config=config))
 ```
+
+* [2019 Feb. 22]
+For some reason Regression is not working as supposed to
+```
+learning curve is not same, final prediction for testing data results in flat line
+```
+==> compare with tutorial to find difference....
