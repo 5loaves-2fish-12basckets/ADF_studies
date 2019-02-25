@@ -2,6 +2,10 @@
 
 following https://www.tensorflow.org/tutorials
 
+## Log
+
+* abort plan to trace everything, aim to learn tensorflow
+
 ## Issues
 
 * [2019 Feb. 20]
