@@ -55,13 +55,13 @@ reduce shifting of attention for adversarial example. <p align="center"><img src
 3. select strong adversarial sample (that deviates attention more)
 
 ##### result
-1. against StepLL, R+StepLL, Iter-LL have improvements better than [Madry et al.](https://arxiv.org/abs/1706.06083) (last paper of week1! Towards...)
-#### branching points
-1. A production of Beijing, China
-2. What is attention area? Att(x) is <img src="/doc/paper_review/tex/5067695677de4d79c598ec1c5a7f74a0.svg?invert_in_darkmode&sanitize=true" align=middle width=154.6962252pt height=24.65753399999998pt/> [Grad-Cam](https://arxiv.org/abs/1610.02391) doing gradients on a trained model? grid cells? unclear mechanism
-3. 
+1. against StepLL, R+StepLL, Iter-LL have improvements better than [Madry et al.](https://arxiv.org/abs/1706.06083) (last paper of week1! Towards..., was state of the art)
 
-!!up to 4.3-4.4
+#### more key points
+1. <img src="/doc/paper_review/tex/c87e803bc91881c3b1545e3dc49a776c.svg?invert_in_darkmode&sanitize=true" align=middle width=1583.3824907999997pt height=24.65753399999998pt/>Grad-CAM(x) > \kappa$ [Grad-Cam](https://arxiv.org/abs/1610.02391) doing gradients on a trained model? grid cells? unclear mechanism
+3. How to defeat this?
+4. Attention based attack vs defence is not evaluated!!
+
 
 
 ---
