@@ -55,13 +55,17 @@ reduce shifting of attention for adversarial example. $$Loss = Distance(g(x), g(
 3. select strong adversarial sample (that deviates attention more)
 
 ##### result
-1. against StepLL, R+StepLL, Iter-LL have improvements better than [Madry et al.](https://arxiv.org/abs/1706.06083) (last paper of week1! Towards...)
+1. against StepLL, R+StepLL, Iter-LL have improvements better than [Madry et al.](https://arxiv.org/abs/1706.06083) (last paper of week1! Towards..., was state of the art)
+
+#### more key points
+1. $\alpha,\beta,\gamma ratio is different in MNIST and cifar10 setting (8,4,1 is generally best)
+2. applied to attack by adding term to encourage attention deviation
 #### branching points
 1. A production of Beijing, China
 2. What is attention area? Att(x) is $Grad-CAM(x) > \kappa$ [Grad-Cam](https://arxiv.org/abs/1610.02391) doing gradients on a trained model? grid cells? unclear mechanism
-3. 
+3. How to defeat this?
+4. Attention based attack vs defence is not evaluated!!
 
-!!up to 4.3-4.4
 
 
 ---
