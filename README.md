@@ -19,18 +19,11 @@ scheduled: Feb. 1- 7
     Intriguing properties of neural networks  https://arxiv.org/abs/1312.6199  
     Towards Evaluating the Robustness of Neural Networks https://arxiv.org/abs/1608.04644  
     Towards Deep Learning Models Resistant to Adversarial Attacks https://arxiv.org/abs/1706.06083  
-    2. follow tensorflow tutorials to learn tensorflow for future needs:  
-    https://www.tensorflow.org/tutorials/  
-    —> do learn and use ML part  
 
 <p align="right">  
-result: <a href="doc/paper_review/week01.md">paper review</a>, <a href="https://github.com/5loaves-2fish-12basckets/ADF_studies/tree/master/doc/tensorflow/1_Learn_and_use_ML">tensorflow tutorial: learn and use ML</a><br>  
-finish date: Feb. 19
+result: <a href="doc/paper_review/week01.md">paper review</a>
+date: Feb. 19
 </p>
- 
-
----
-</details>
 
 
 * week 2  
@@ -39,9 +32,12 @@ scheduled: Feb. 8 - 14
     1. follow references and citations of previous papers   
     2. write a review on these papers  
 
-    3. follow tensorflow tutorials to learn tensorflow for future needs:  
-    https://www.tensorflow.org/tutorials/  
-    —> do Research and experiment part  
+<p align="right">  
+result: <a href="doc/paper_review/week01.md">paper review</a>
+date: Feb. 26
+</p>
+---
+</details>
 
 * week 3  
 scheduled: Feb. 15 - 21  
@@ -56,13 +52,13 @@ https://arxiv.org/pdf/1711.00851.pdf
 Certified Robustness to Adversarial Examples with Differential Privacy  
 https://arxiv.org/pdf/1802.03471.pdf  
 
-    2. understand code  
+    2. reproduce RBFI
+https://github.com/lucadealfaro/rbfi
+
+    3. understand code  
 code for certified robustness for relu networks  
 https://github.com/huanzhang12/CertifiedReLURobustness  
 
-    3. follow tensorflow tutorials to learn tensorflow for future needs:  
-https://www.tensorflow.org/tutorials/  
-—> do ML at production scale part   
 
 * week 4  
 scheduled: Feb. 22 - 28  
@@ -91,18 +87,11 @@ Ensemble Adversarial Training: Attacks and Defenses
 https://arxiv.org/abs/1705.07204  
 (code https://github.com/sangxia/nips-2017-adversarial)  
 
-    2. follow tensorflow tutorials to learn tensorflow for future needs:  
-https://www.tensorflow.org/tutorials/  
-—> do images  
 
 * week 6  
 scheduled: Mar. 8 - 14  
     1. follow references and citations of previous papers   
     2. write a review on these papers  
-
-    3. follow tensorflow tutorials to learn tensorflow for future needs:  
-https://www.tensorflow.org/tutorials/  
-—> do sequences 
 
 * week 7  
 scheduled: Mar. 15 - 21  
@@ -115,10 +104,7 @@ https://openreview.net/pdf?id=SyZI0GWCZ
 spacially transform adversarial examples https://openreview.net/pdf?id=HyydRMZC-  
 
     2. finalize previous reviews and finish writing review paper  
-
-    3. follow tensorflow tutorials to learn tensorflow for future needs:  
-https://www.tensorflow.org/tutorials/  
-—> do Load data and data representation  
+  
 
 * week 8  
 scheduled: Mar. 22 - 28  

@@ -34,7 +34,7 @@ scheduled date: Feb. 8 - Feb. 14
 
 ## Attention, Please! Adversarial Defense via Attention Rectification and Preservation
 [paper link](https://arxiv.org/abs/1811.09831)
->This paper 
+>This paper applies insights gained from attention analysis on deep learning models to build strong adversarial defence (that does not deviate attention much when subject to adversarial example) and also apply to new attack (that considers attention)
 >(Nov. 2018)
 
 #### selected key points
@@ -58,11 +58,12 @@ reduce shifting of attention for adversarial example. $$Loss = Distance(g(x), g(
 1. against StepLL, R+StepLL, Iter-LL have improvements better than [Madry et al.](https://arxiv.org/abs/1706.06083) (last paper of week1! Towards..., was state of the art)
 
 #### more key points
-1. $\alpha,\beta,\gamma ratio is different in MNIST and cifar10 setting (8,4,1 is generally best)
+1. $\alpha,\beta,\gamma$ ratio is different in MNIST and cifar10 setting (8,4,1 is generally best)
 2. applied to attack by adding term to encourage attention deviation
 #### branching points
 1. A production of Beijing, China
-2. What is attention area? Att(x) is $Grad-CAM(x) > \kappa$ [Grad-Cam](https://arxiv.org/abs/1610.02391) doing gradients on a trained model? grid cells? unclear mechanism
+2. Attention area $Att(x)\equiv Grad-CAM(x) > \kappa$ 
+Check out [Grad-Cam](https://arxiv.org/abs/1610.02391)! 
 3. How to defeat this?
 4. Attention based attack vs defence is not evaluated!!
 
@@ -71,28 +72,38 @@ reduce shifting of attention for adversarial example. $$Loss = Distance(g(x), g(
 ---
 ## Sparse DNNs with Improved Adversarial Robustness
 [paper link](https://papers.nips.cc/paper/7308-sparse-dnns-with-improved-adversarial-robustness.pdf)
->This paper 
+>Pruning a model saves computation/memory costs. This paper suggests that it can also help defend adversarial attack and discusses inefficiency and unrobustness of DNN together.
 
 #### selected key points
-1.
+1. DNN (basically deep learning) has redundent feature representations, and could improve for mobile application "[Predicting parameters in deep learning](https://arxiv.org/abs/1306.0543)" On the other hand there is the adversarial issue.
+2. sparsity of connection or sparsity of neuron activity
+
+!! up to 3 !! many math...
+
 #### branching points
-1.
+1. Is a sparse DNN equivalent to a non linear DNN as coined in this paper?
+2. The conclution here seems to be coherent with the paper above that adversarial attack utilizes less confidence connections/predictions/areas
 
 ## Neural Networks with Structural Resistance to Adversarial Attacks
 [paper link](https://arxiv.org/abs/1809.09262)
->This paper 
+>This paper promotes RBFI to replace ReLu! Following GoodFellow et al. (2014) that states local linearity may be key, the author aims to create a highly non-linear deep leaning model.
 
 #### selected key points
-1.
+1. (linearity issue) $\sum_{i=1}^nx_iw_i\rightarrow\sum_{i=1}^n(x_i+sgn(w)\epsilon)w_i$ will have output perturbation of $\epsilon\sum_{i=1}^n\vert w_i\vert$ which will be huge for large n
+2. (gaussian) radial basis function is $\phi(x)=e^{-(\varepsilon r)^2}$ RBFI follows this and adds (i) remove radial symmetry and allow RBFIs to scale each component (sensitivity) individually; (ii) calculate distance not in $l_2$ but in $l_\infty$, which is maximum of difference, so we have n=1. (I in RBFI is infinity)
+3. pseudo gradient!
+4. result: similar to relu/sigmoid for MNIST, superb for adversarial MNIST (90% vs 2%)!
+
+!! up to 2 !! finish this + reproduce!
 #### branching points
-1.
+1. reproduce this!!!https://github.com/lucadealfaro/rbfi
 
 ---
 
 ## Adversarial Diversity and Hard Positive Generation
 
 [paper link](https://arxiv.org/abs/1605.01775)
->This paper 
+>We are focusing on PASS in this paper 
 
 #### selected key points
 1.
@@ -102,7 +113,7 @@ reduce shifting of attention for adversarial example. $$Loss = Distance(g(x), g(
 ## Wild patterns: Ten years after the rise of adversarial machine learning
 
 [paper link](https://www.sciencedirect.com/science/article/pii/S0031320318302565)
->This paper 
+>We are focusing on "Towards deep leaning..." in this paper
 
 #### selected key points
 1.
