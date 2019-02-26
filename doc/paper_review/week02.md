@@ -34,7 +34,7 @@ scheduled date: Feb. 8 - Feb. 14
 
 ## Attention, Please! Adversarial Defense via Attention Rectification and Preservation
 [paper link](https://arxiv.org/abs/1811.09831)
->This paper 
+>This paper applies insights gained from attention analysis on deep learning models to build strong adversarial defence (that does not deviate attention much when subject to adversarial example) and also apply to new attack (that considers attention)
 >(Nov. 2018)
 
 #### selected key points
@@ -58,7 +58,12 @@ reduce shifting of attention for adversarial example. <p align="center"><img src
 1. against StepLL, R+StepLL, Iter-LL have improvements better than [Madry et al.](https://arxiv.org/abs/1706.06083) (last paper of week1! Towards..., was state of the art)
 
 #### more key points
-1. <img src="/doc/paper_review/tex/c87e803bc91881c3b1545e3dc49a776c.svg?invert_in_darkmode&sanitize=true" align=middle width=1583.3824907999997pt height=24.65753399999998pt/>Grad-CAM(x) > \kappa$ [Grad-Cam](https://arxiv.org/abs/1610.02391) doing gradients on a trained model? grid cells? unclear mechanism
+1. <img src="/doc/paper_review/tex/9883d68e9a70fbbaf4f2f1e833e55165.svg?invert_in_darkmode&sanitize=true" align=middle width=44.777676899999996pt height=22.831056599999986pt/> ratio is different in MNIST and cifar10 setting (8,4,1 is generally best)
+2. applied to attack by adding term to encourage attention deviation
+#### branching points
+1. A production of Beijing, China
+2. Attention area <img src="/doc/paper_review/tex/1cc8338ace24e38a43eebc16e87aff6e.svg?invert_in_darkmode&sanitize=true" align=middle width=222.99527084999994pt height=24.65753399999998pt/> 
+Check out [Grad-Cam](https://arxiv.org/abs/1610.02391)! 
 3. How to defeat this?
 4. Attention based attack vs defence is not evaluated!!
 
@@ -67,28 +72,38 @@ reduce shifting of attention for adversarial example. <p align="center"><img src
 ---
 ## Sparse DNNs with Improved Adversarial Robustness
 [paper link](https://papers.nips.cc/paper/7308-sparse-dnns-with-improved-adversarial-robustness.pdf)
->This paper 
+>Pruning a model saves computation/memory costs. This paper suggests that it can also help defend adversarial attack and discusses inefficiency and unrobustness of DNN together.
 
 #### selected key points
-1.
+1. DNN (basically deep learning) has redundent feature representations, and could improve for mobile application "[Predicting parameters in deep learning](https://arxiv.org/abs/1306.0543)" On the other hand there is the adversarial issue.
+2. sparsity of connection or sparsity of neuron activity
+
+!! up to 3 !! many math...
+
 #### branching points
-1.
+1. Is a sparse DNN equivalent to a non linear DNN as coined in this paper?
+2. The conclution here seems to be coherent with the paper above that adversarial attack utilizes less confidence connections/predictions/areas
 
 ## Neural Networks with Structural Resistance to Adversarial Attacks
 [paper link](https://arxiv.org/abs/1809.09262)
->This paper 
+>This paper promotes RBFI to replace ReLu! Following GoodFellow et al. (2014) that states local linearity may be key, the author aims to create a highly non-linear deep leaning model.
 
 #### selected key points
-1.
+1. (linearity issue) <img src="/doc/paper_review/tex/a5f0bd69955128fc5fe34f42a7365fb5.svg?invert_in_darkmode&sanitize=true" align=middle width=261.19126769999997pt height=26.438629799999987pt/> will have output perturbation of <img src="/doc/paper_review/tex/f593d569df8fde0356aac100f399c5f4.svg?invert_in_darkmode&sanitize=true" align=middle width=77.99382194999998pt height=26.438629799999987pt/> which will be huge for large n
+2. (gaussian) radial basis function is <img src="/doc/paper_review/tex/b205da1e6227c577cc3e7931d563d93c.svg?invert_in_darkmode&sanitize=true" align=middle width=100.35654749999999pt height=32.44583099999998pt/> RBFI follows this and adds (i) remove radial symmetry and allow RBFIs to scale each component (sensitivity) individually; (ii) calculate distance not in <img src="/doc/paper_review/tex/7252ad06a4944da2b6628a58281cb887.svg?invert_in_darkmode&sanitize=true" align=middle width=11.45742179999999pt height=22.831056599999986pt/> but in <img src="/doc/paper_review/tex/2b4f8dfb585beeba8b6047b353d0efd9.svg?invert_in_darkmode&sanitize=true" align=middle width=18.00995789999999pt height=22.831056599999986pt/>, which is maximum of difference, so we have n=1. (I in RBFI is infinity)
+3. pseudo gradient!
+4. result: similar to relu/sigmoid for MNIST, superb for adversarial MNIST (90% vs 2%)!
+
+!! up to 2 !! finish this + reproduce!
 #### branching points
-1.
+1. reproduce this!!!https://github.com/lucadealfaro/rbfi
 
 ---
 
 ## Adversarial Diversity and Hard Positive Generation
 
 [paper link](https://arxiv.org/abs/1605.01775)
->This paper 
+>We are focusing on PASS in this paper 
 
 #### selected key points
 1.
@@ -98,7 +113,7 @@ reduce shifting of attention for adversarial example. <p align="center"><img src
 ## Wild patterns: Ten years after the rise of adversarial machine learning
 
 [paper link](https://www.sciencedirect.com/science/article/pii/S0031320318302565)
->This paper 
+>We are focusing on "Towards deep leaning..." in this paper
 
 #### selected key points
 1.
