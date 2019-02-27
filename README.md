@@ -33,7 +33,7 @@ scheduled: Feb. 8 - 14
     2. write a review on these papers  
 
 <p align="right">  
-result: <a href="doc/paper_review/week01.md">paper review</a>
+result: <a href="doc/paper_review/week02.md">paper review</a>
 date: Feb. 26
 </p>
 ---
