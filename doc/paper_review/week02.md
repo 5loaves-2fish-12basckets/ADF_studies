@@ -127,18 +127,18 @@ For RBFI unit we have <img src="/doc/paper_review/tex/56330e280a8bc7c9fe91aed7d9
 #### summary
 > This work uses a new unit with <img src="/doc/paper_review/tex/2b4f8dfb585beeba8b6047b353d0efd9.svg?invert_in_darkmode&sanitize=true" align=middle width=18.00995789999999pt height=22.831056599999986pt/> distance for forward pass and similar differentiable function for backward pass (pseudogradient descent) to create a non linear model that resists adversarial attack for <img src="/doc/paper_review/tex/30e387f74c6297fbd0f38b3a98493efb.svg?invert_in_darkmode&sanitize=true" align=middle width=49.59466544999998pt height=21.18721440000001pt/>
 ##### chapter-wise note
-1. Introduction
-    * Goodfellow et al. suggests (local) linearity is key. Consider $\sum^n_ix_iw_i$ can have $n\epsilon\vert w\vert$ output change which snowballs through layers
-    * MWD unit activate as $$\mathcal{U}(u,w)(x)=\exp\big(-\max\limits_{1\le i\le n}(u_i(x_i-w_i))^2\big)$$ which is for x $l_\infty$ distance from w multiply non-negative weight $u_i$ for coordinate i
-    * Found pseudogradient as proxy for training efficiently
-2. Related Work
-    * Goodfellow et al. mentioned RadialBasisFunction
-    * Condsiders FGSM, I-FGSM, and PGD (Madry et al.)
-3. MWD Networks
-    * MWD units output ~ 1 only when x close to w => AND gate
-    * $1-\mathcal{U}$ as NAND gate, use AND layer; NAND layer or mixed
-    * gradient$\Rightarrow$pseudogradients: $$\frac{d}{dz}e^{-z}=-e^{-z}\Rightarrow -\frac{1}{\sqrt{1+z}}$$$$\frac{d}{dz}\max z_i=\begin{cases}1 & z_i=y\\0 & z_i<y\end{cases}\Rightarrow e^{z_i-y}=\begin{cases}1&z_i=y\\e^{-\delta}&z_i<y\end{cases}$$
-7. Results
+1) Introduction
+* Goodfellow et al. suggests (local) linearity is key. Consider <img src="/doc/paper_review/tex/d7d6c4ae906a3f1d711e357829fd3405.svg?invert_in_darkmode&sanitize=true" align=middle width=60.326440349999984pt height=26.438629799999987pt/> can have <img src="/doc/paper_review/tex/7a7ee7301f4d65735780e52959669f93.svg?invert_in_darkmode&sanitize=true" align=middle width=37.88256119999999pt height=24.65753399999998pt/> output change which snowballs through layers
+* MWD unit activate as <p align="center"><img src="/doc/paper_review/tex/a9e7b27c420e75a933de3ca9e73d1ce6.svg?invert_in_darkmode&sanitize=true" align=middle width=300.65031315pt height=26.964243899999996pt/></p> which is for x <img src="/doc/paper_review/tex/2b4f8dfb585beeba8b6047b353d0efd9.svg?invert_in_darkmode&sanitize=true" align=middle width=18.00995789999999pt height=22.831056599999986pt/> distance from w multiply non-negative weight <img src="/doc/paper_review/tex/194516c014804d683d1ab5a74f8c5647.svg?invert_in_darkmode&sanitize=true" align=middle width=14.061172949999989pt height=14.15524440000002pt/> for coordinate i
+* Found pseudogradient as proxy for training efficiently
+2) Related Work
+* Goodfellow et al. mentioned RadialBasisFunction
+* Condsiders FGSM, I-FGSM, and PGD (Madry et al.)
+3) MWD Networks
+* MWD units output ~ 1 only when x close to w => AND gate
+* <img src="/doc/paper_review/tex/db73f7bb80b5ea6c4ad9f93f6bcfac5e.svg?invert_in_darkmode&sanitize=true" align=middle width=40.23047324999999pt height=22.465723500000017pt/> as NAND gate, use AND layer; NAND layer or mixed
+* gradient<img src="/doc/paper_review/tex/777d001ea1ec5971b67bb546ed760f97.svg?invert_in_darkmode&sanitize=true" align=middle width=16.43840384999999pt height=14.15524440000002pt/>pseudogradients: <p align="center"><img src="/doc/paper_review/tex/6efd6c3dfe02537d30d48bb0ac45115b.svg?invert_in_darkmode&sanitize=true" align=middle width=195.30935985pt height=37.8236826pt/></p><p align="center"><img src="/doc/paper_review/tex/c4c1cb8ca55ee578f95f6a9797c13c7a.svg?invert_in_darkmode&sanitize=true" align=middle width=356.8735302pt height=49.315569599999996pt/></p>
+7) Results
 * can use gradient, but will be very slow, experiment show training with gradient is not significantly better.
 * MWD Networks significantly higher than Relu trained with adversarial example for <img src="/doc/paper_review/tex/61f7c612d7d4c56da07ad1ebae0972de.svg?invert_in_darkmode&sanitize=true" align=middle width=79.7315046pt height=21.18721440000001pt/>
 #### branching points and thoughts
