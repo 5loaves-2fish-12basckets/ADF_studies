@@ -12,6 +12,8 @@ scheduled date: Feb. 8 - Feb. 14
 > paper list2:  
 [Sparse DNNs with Improved Adversarial Robustness](#Sparse-DNNs-with-Improved-Adversarial-Robustness)
 [Neural Networks with Structural Resistance to Adversarial Attacks](#Neural-Networks-with-Structural-Resistance-to-Adversarial-Attacks)
+[A New Family of Neural Networks Provably Resistant to
+Adversarial Attacks](#A-New-Family-of-Neural-Networks-Provably-Resistant-to-Adversarial-Attacks)
 
 > paper list3:
 > (quick check on PASS)
@@ -74,15 +76,16 @@ Check out [Grad-Cam](https://arxiv.org/abs/1610.02391)!
 [paper link](https://papers.nips.cc/paper/7308-sparse-dnns-with-improved-adversarial-robustness.pdf)
 >Pruning a model saves computation/memory costs. This paper suggests that it can also help defend adversarial attack and discusses inefficiency and unrobustness of DNN together.
 
+
 #### selected key points
 1. DNN (basically deep learning) has redundent feature representations, and could improve for mobile application "[Predicting parameters in deep learning](https://arxiv.org/abs/1306.0543)" On the other hand there is the adversarial issue.
 2. sparsity of connection or sparsity of neuron activity
 
-!! up to 3 !! many math...
 
 #### branching points
 1. Is a sparse DNN equivalent to a non linear DNN as coined in this paper?
 2. The conclution here seems to be coherent with the paper above that adversarial attack utilizes less confidence connections/predictions/areas
+3. The rest of this paper (after 3.) is skipped
 
 ## Neural Networks with Structural Resistance to Adversarial Attacks
 [paper link](https://arxiv.org/abs/1809.09262)
@@ -93,29 +96,75 @@ Check out [Grad-Cam](https://arxiv.org/abs/1610.02391)!
 2. (gaussian) radial basis function is $\phi(x)=e^{-(\varepsilon r)^2}$ RBFI follows this and adds (i) remove radial symmetry and allow RBFIs to scale each component (sensitivity) individually; (ii) calculate distance not in $l_2$ but in $l_\infty$, which is maximum of difference, so we have n=1. (I in RBFI is infinity)
 3. pseudo gradient!
 4. result: similar to relu/sigmoid for MNIST, superb for adversarial MNIST (90% vs 2%)!
+5. history: FGSM idea based on linearity,
+training on FGSM ad-examples isn't good enough (label leaking).
+Iterative I-FGSM and ensemble method won NIPS 2017, also using small random perturbations before FSGM is good
+carlini and wagner show FGSM rely on local gradients, and propose using more general optimization to find attack.
+6. Finally, Madry et al. find PGD to be strongest attack, and training on such examples though computationally exspensive, provides good defence.
 
-!! up to 2 !! finish this + reproduce!
+##### RBFI units explained:
+to find small output variant under small input variant in infinity norm  
+* a single unit in a layer of DNN can be written as $\sum_ix_iw_i$, which can be interperted as distance to a plane perpendicular to to vector w, scaled by $\vert w \vert$ 
+* For $\infty$ norm, pt to pt distance is more reasonable. So the author constructs $$N_\gamma(u,w)(x)=exp(-\Vert u \odot (x-w)\Vert^2_\gamma), \gamma=\infty$$This becomes $$N_\infty(u,w)(x)=exp\big(-\max\limits_{1\le i\le n}(u_i(x_i-w_i))^2\big)$$ which works like an AND gate. Created similarly is the OR gate/unit:$$N_\infty(u,w)(x)=1-exp\big(-\max\limits_{1\le i\le n}(u_i(x_i-w_i))^2\big)$$And layer, Or layer or Mixed layer can be constructed with these units
+* Sensitivity  
+Normal relu/sigmoid \(x 1/4) unit have $pert.=\epsilon\times\sum\limits_{i=1}^n\Vert w\Vert_1$
+For RBFI unit we have $\epsilon\times$ ... unclear!!! but perhaps change addition to multiplication
+
+(aborted because next paper has same essence but better wording)
+
+
+
 #### branching points
 1. reproduce this!!!https://github.com/lucadealfaro/rbfi
+2. Is this because previous adversarial attack utilize normal gradients. Did this paper utilize 'pseudo gradient' for adversarial as well?
+
+
+## A New Family of Neural Networks Provably Resistant to Adversarial Attacks
+(using new template for paper review starting here)
+* **Authors:** Rakshit Agrawal, Luca de Alfaro, David Helmbold
+* [**paper link**](https://arxiv.org/abs/1902.01208)
+* **publish date:** Feb 2019
+#### summary
+> This work uses a new unit with $l_\infty$ distance for forward pass and similar differentiable function for backward pass (pseudogradient descent) to create a non linear model that resists adversarial attack for $\epsilon<0.5$
+##### chapter-wise note
+1. Introduction
+    * Goodfellow et al. suggests (local) linearity is key. Consider $\sum^n_ix_iw_i$ can have $n\epsilon\vert w\vert$ output change which snowballs through layers
+    * MWD unit activate as $$\mathcal{U}(u,w)(x)=\exp\big(-\max\limits_{1\le i\le n}(u_i(x_i-w_i))^2\big)$$ which is for x $l_\infty$ distance from w multiply non-negative weight $u_i$ for coordinate i
+    * Found pseudogradient as proxy for training efficiently
+2. Related Work
+    * Goodfellow et al. mentioned RadialBasisFunction
+    * Condsiders FGSM, I-FGSM, and PGD (Madry et al.)
+3. MWD Networks
+    * MWD units output ~ 1 only when x close to w => AND gate
+    * $1-\mathcal{U}$ as NAND gate, use AND layer; NAND layer or mixed
+    * gradient$\Rightarrow$pseudogradients: $$\frac{d}{dz}e^{-z}=-e^{-z}\Rightarrow -\frac{1}{\sqrt{1+z}}$$$$\frac{d}{dz}\max z_i=\begin{cases}1 & z_i=y\\0 & z_i<y\end{cases}\Rightarrow e^{z_i-y}=\begin{cases}1&z_i=y\\e^{-\delta}&z_i<y\end{cases}$$
+7. Results
+* can use gradient, but will be very slow, experiment show training with gradient is not significantly better.
+* MWD Networks significantly higher than Relu trained with adversarial example for $0<\epsilon<0.5$
+#### branching points and thoughts
+1. various kind of pseudogradient -> reinforcement, local incentives?
+2. non-negative weight => Relu unit with single input, max op... pooling?
+3. what about all/non as in bio neurons? 
 
 ---
 
 ## Adversarial Diversity and Hard Positive Generation
+* **Authors:** Andras Rozsa, Ethan M. Rudd, Terrance E. Boult
+* [**paper link**](https://arxiv.org/abs/1605.01775)
+* **date:** May 2016
+#### summary
+> This work promotes PASS as a measure of how close an adversarial example is to its original counterpart, as considered by 'human'
+##### chapter-wise note
 
-[paper link](https://arxiv.org/abs/1605.01775)
->We are focusing on PASS in this paper 
-
-#### selected key points
-1.
 #### branching points
-1.
+
 
 ## Wild patterns: Ten years after the rise of adversarial machine learning
+* **Authors:** Battista Biggio, Fabio Roli
+* [**paper link**](https://www.sciencedirect.com/science/article/pii/S0031320318302565)
+* **date:** Jul 2018
+#### summary
+> This work summarize 10 years of development on the topic of adversarial attack. Regarding the work of Madry et al.
+##### chapter-wise note
 
-[paper link](https://www.sciencedirect.com/science/article/pii/S0031320318302565)
->We are focusing on "Towards deep leaning..." in this paper
-
-#### selected key points
-1.
 #### branching points
-1.
