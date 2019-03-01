@@ -127,18 +127,18 @@ For RBFI unit we have $\epsilon\times$ ... unclear!!! but perhaps change additio
 #### summary
 > This work uses a new unit with $l_\infty$ distance for forward pass and similar differentiable function for backward pass (pseudogradient descent) to create a non linear model that resists adversarial attack for $\epsilon<0.5$
 ##### chapter-wise note
-1. Introduction
-    * Goodfellow et al. suggests (local) linearity is key. Consider $\sum^n_ix_iw_i$ can have $n\epsilon\vert w\vert$ output change which snowballs through layers
-    * MWD unit activate as $$\mathcal{U}(u,w)(x)=\exp\big(-\max\limits_{1\le i\le n}(u_i(x_i-w_i))^2\big)$$ which is for x $l_\infty$ distance from w multiply non-negative weight $u_i$ for coordinate i
-    * Found pseudogradient as proxy for training efficiently
-2. Related Work
-    * Goodfellow et al. mentioned RadialBasisFunction
-    * Condsiders FGSM, I-FGSM, and PGD (Madry et al.)
-3. MWD Networks
-    * MWD units output ~ 1 only when x close to w => AND gate
-    * $1-\mathcal{U}$ as NAND gate, use AND layer; NAND layer or mixed
-    * gradient$\Rightarrow$pseudogradients: $$\frac{d}{dz}e^{-z}=-e^{-z}\Rightarrow -\frac{1}{\sqrt{1+z}}$$$$\frac{d}{dz}\max z_i=\begin{cases}1 & z_i=y\\0 & z_i<y\end{cases}\Rightarrow e^{z_i-y}=\begin{cases}1&z_i=y\\e^{-\delta}&z_i<y\end{cases}$$
-7. Results
+1) Introduction
+* Goodfellow et al. suggests (local) linearity is key. Consider $\sum^n_ix_iw_i$ can have $n\epsilon\vert w\vert$ output change which snowballs through layers
+* MWD unit activate as $$\mathcal{U}(u,w)(x)=\exp\big(-\max\limits_{1\le i\le n}(u_i(x_i-w_i))^2\big)$$ which is for x $l_\infty$ distance from w multiply non-negative weight $u_i$ for coordinate i
+* Found pseudogradient as proxy for training efficiently
+2) Related Work
+* Goodfellow et al. mentioned RadialBasisFunction
+* Condsiders FGSM, I-FGSM, and PGD (Madry et al.)
+3) MWD Networks
+* MWD units output ~ 1 only when x close to w => AND gate
+* $1-\mathcal{U}$ as NAND gate, use AND layer; NAND layer or mixed
+* gradient$\Rightarrow$pseudogradients: $$\frac{d}{dz}e^{-z}=-e^{-z}\Rightarrow -\frac{1}{\sqrt{1+z}}$$$$\frac{d}{dz}\max z_i=\begin{cases}1 & z_i=y\\0 & z_i<y\end{cases}\Rightarrow e^{z_i-y}=\begin{cases}1&z_i=y\\e^{-\delta}&z_i<y\end{cases}$$
+7) Results
 * can use gradient, but will be very slow, experiment show training with gradient is not significantly better.
 * MWD Networks significantly higher than Relu trained with adversarial example for $0<\epsilon<0.5$
 #### branching points and thoughts
