@@ -10,7 +10,7 @@ this is a 21 week plan to study Adversarial Attacks and Defences
 <details open><summary>finished progress</summary>
 
 * week 1  
-scheduled: Feb. 1- 7            
+scheduled: Feb. 15 - 21 (semester starts)  
     
     1. read basics:
     Are Adversarial Examples inevitable? https://openreview.net/pdf?id=r1lWUoA9FQ  
@@ -27,7 +27,7 @@ date: Feb. 19
 
 
 * week 2  
-scheduled: Feb. 8 - 14  
+scheduled: Feb. 22 - 28  
 
     1. follow references and citations of previous papers   
     2. write a review on these papers  
@@ -40,7 +40,7 @@ date: Feb. 26
 </details>
 
 * week 3  
-scheduled: Feb. 15 - 21  
+scheduled: Mar. 1 - 7  
 
     1. read  (investigate certified robustness and provable defense)
 Certified Robustness to Adversarial Examples with Differential Privacy  
@@ -61,7 +61,7 @@ https://github.com/huanzhang12/CertifiedReLURobustness
 
 
 * week 4  
-scheduled: Feb. 22 - 28  
+scheduled: Mar. 8 - 14  
 
     1. follow references and citations of previous papers   
     2. write a review on these papers  
@@ -70,7 +70,7 @@ https://www.tensorflow.org/tutorials/
 —> do generative models  
 
 * week 5  
-scheduled: Mar. 1 - 7  
+scheduled: Mar. 15 - 21  
 (investigate NIPS challange)  
     1. read   
 Adversarial Attacks and Defences Competition  
@@ -89,12 +89,12 @@ https://arxiv.org/abs/1705.07204
 
 
 * week 6  
-scheduled: Mar. 8 - 14  
+scheduled: Mar. 22 - 28  
     1. follow references and citations of previous papers   
     2. write a review on these papers  
 
 * week 7  
-scheduled: Mar. 15 - 21  
+scheduled: Mar. 29 - Apr. 4 (there is holiday)  
     1. read  
 universal adversarial patch   
 https://medium.com/deep-dimension/deep-learning-papers-review-universal-adversarial-patch-a5ad222a62d2  
@@ -107,56 +107,56 @@ spacially transform adversarial examples https://openreview.net/pdf?id=HyydRMZC-
   
 
 * week 8  
-scheduled: Mar. 22 - 28  
+scheduled: Apr. 5 - 11  (prepare midterm)
 
     1. reproduce Boosting Adversarial Attacks with Momentum (in pytorch)  
   
 * week 9  
-scheduled: Mar. 29 - Apr. 4 (there is holiday)  
+scheduled: Apr. 12 - 18 (Midterm)  
     1. reproduce certified robustness (in pytorch)  
 test Boosting Adversarial Attacks with Momentum against certified robustness  
 
 \<full review of adversarial attacks and simple reproductions>  
 * week 10  
-scheduled: Apr. 5 - 11  (prepare midterm)
+scheduled: Apr. 19 - 25  
 
 * week 11  
-scheduled: Apr. 12 - 18 (Midterm)  
+scheduled: Apr. 26 - May 2  
 「  
 Goal:   
 (following certified robustness)  
 try to come up with best defence against state of the art adversarial attack on mnist dataset  
 
 * week 12  
-scheduled: Apr. 19 - 25  
+scheduled: May 3 - 9   
 
 
 * week 13  
-scheduled: Apr. 26 - May 2  
+scheduled: May 10 - 16  
 
   
 * week 14  
-scheduled: May 3 - 9   
+scheduled: May 17 - 23  
 
 * week 15  
-scheduled: May 10 - 16  
-* week 16  
-scheduled: May 17 - 23  
-* week 17  
 scheduled: May 24 - 30  
-* week 18  
+* week 16  
 scheduled: May 31 - Jun. 6  
+* week 17  
+scheduled: Jun. 7 - 13  
+* week 18  
+scheduled: Jun. 14 - 20 (final) 
 
 」  
 
 \<come up with new idea and execute>  
 * week 19  
-scheduled: Jun. 7 - 13  
+scheduled: Jun. 21 - 27  
 finish ADF results, write report  
 * week 20  
-scheduled: Jun. 14 - 20 (final) 
+scheduled: Jun. 28 - Jul. 4   
 * week 21  
-scheduled: Jun. 21 - 28  
+scheduled: Jun. 5 - 11  
 
 finish ADF results, write report  
 
