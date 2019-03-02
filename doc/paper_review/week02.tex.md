@@ -15,12 +15,13 @@ scheduled date: Feb. 8 - Feb. 14
 [A New Family of Neural Networks Provably Resistant to
 Adversarial Attacks](#A-New-Family-of-Neural-Networks-Provably-Resistant-to-Adversarial-Attacks)
 
-> paper list3:
-> (quick check on PASS)
-> [Adversarial Diversity and Hard Positive Generation](#Adversarial-Diversity-and-Hard-Positive-Generation)
->(check if Towards deep learning ... is deafeated as of 2018)
->[Wild patterns: Ten years after the rise of adversarial machine learning](#Wild-patterns-Ten-years-after-the-rise-of-adversarial-machine-learning)
-## Extending Adversarial Attacks and Defenses to Deep 3D Point Cloud Classifiers 
+> paper list3:  
+> (quick check on PASS)  
+> [Adversarial Diversity and Hard Positive Generation](#Adversarial-Diversity-and-Hard-Positive-Generation)  
+>(check if Towards deep learning ... is deafeated as of 2018)  
+>[Wild patterns: Ten years after the rise of adversarial machine learning](#Wild-patterns-Ten-years-after-the-rise-of-adversarial-machine-learning)  
+
+## Extending Adversarial Attacks and Defenses to Deep 3D Point Cloud Classifiers   
 [paper link](https://arxiv.org/abs/1901.03006)
 >This paper investigates adversarail attack and defence on 3D Point Cloud Classifiers, and found it to be attackable, and also defendable to some degree
 >(Jan. 2019)
@@ -127,24 +128,23 @@ For RBFI unit we have $\epsilon\times$ ... unclear!!! but perhaps change additio
 #### summary
 > This work uses a new unit with $l_\infty$ distance for forward pass and similar differentiable function for backward pass (pseudogradient descent) to create a non linear model that resists adversarial attack for $\epsilon<0.5$
 ##### chapter-wise note
-1) Introduction
+(1. Introduction)
 * Goodfellow et al. suggests (local) linearity is key. Consider $\sum^n_ix_iw_i$ can have $n\epsilon\vert w\vert$ output change which snowballs through layers
 * MWD unit activate as $$\mathcal{U}(u,w)(x)=\exp\big(-\max\limits_{1\le i\le n}(u_i(x_i-w_i))^2\big)$$ which is for x $l_\infty$ distance from w multiply non-negative weight $u_i$ for coordinate i
 * Found pseudogradient as proxy for training efficiently
-2) Related Work
+(2. Related Work)   
 * Goodfellow et al. mentioned RadialBasisFunction
 * Condsiders FGSM, I-FGSM, and PGD (Madry et al.)
-3) MWD Networks
+(3. MWD Networks)
 * MWD units output ~ 1 only when x close to w => AND gate
 * $1-\mathcal{U}$ as NAND gate, use AND layer; NAND layer or mixed
 * gradient$\Rightarrow$pseudogradients: $$\frac{d}{dz}e^{-z}=-e^{-z}\Rightarrow -\frac{1}{\sqrt{1+z}}$$$$\frac{d}{dz}\max z_i=\begin{cases}1 & z_i=y\\0 & z_i<y\end{cases}\Rightarrow e^{z_i-y}=\begin{cases}1&z_i=y\\e^{-\delta}&z_i<y\end{cases}$$
-7) Results
+(7. Results)
 * can use gradient, but will be very slow, experiment show training with gradient is not significantly better.
 * MWD Networks significantly higher than Relu trained with adversarial example for $0<\epsilon<0.5$
 #### branching points and thoughts
-1. various kind of pseudogradient -> reinforcement, local incentives?
-2. non-negative weight => Relu unit with single input, max op... pooling?
-3. what about all/non as in bio neurons? 
+1. is it possible to go from various kind of pseudogradient (this work) to using reinforcement, or a somewhat local incentives or different kind of propagation of error.
+2. what about all/non as in bio neurons? 
 
 ---
 
@@ -153,10 +153,13 @@ For RBFI unit we have $\epsilon\times$ ... unclear!!! but perhaps change additio
 * [**paper link**](https://arxiv.org/abs/1605.01775)
 * **date:** May 2016
 #### summary
-> This work promotes PASS as a measure of how close an adversarial example is to its original counterpart, as considered by 'human'
-##### chapter-wise note
+> This work promotes psycometric perceptual adversarial similarity score (PASS) as a measure of how close an adversarial example is to its original counterpart, as considered by 'human'  
+(3. PASS)  
+* human can correctly classify --> should consider noticeble differece, excluding small perturbation, small rotation/translation
+* measurement: 1. align, by enhanced correlation coefficient  2. measure difference, by structural difference, regional structural similarity index $RSSIM(x,y)=L(x,y)^\alpha C(x,y)^\beta S(x,y)^\gamma$ corresponding to luminance, contrast, and structure. (can be calculated by mean, variance and covariance of that spot)
 
 #### branching points
+* This doesn't seem useful
 
 
 ## Wild patterns: Ten years after the rise of adversarial machine learning
@@ -164,7 +167,10 @@ For RBFI unit we have $\epsilon\times$ ... unclear!!! but perhaps change additio
 * [**paper link**](https://www.sciencedirect.com/science/article/pii/S0031320318302565)
 * **date:** Jul 2018
 #### summary
-> This work summarize 10 years of development on the topic of adversarial attack. Regarding the work of Madry et al.
-##### chapter-wise note
+> This work summarize 10 years of development on the topic of adversarial attack. Regarding the work of Madry et al., the current state of the art defence has not been defeated yet.
 
-#### branching points
+* Robust optimization formulates adversarial learning as a minimax problem in which the inner problem maximizes the training loss by manipulating the traning points under worst-case, bounded pertutrbations, while the outer problem trains the learning algorithm to minimize the corresponding worst-case training loss. 
+
+
+#### branching point
+* would be useful to go through other parts of this review, has a good summarizing plot.
