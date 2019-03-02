@@ -15,12 +15,13 @@ scheduled date: Feb. 8 - Feb. 14
 [A New Family of Neural Networks Provably Resistant to
 Adversarial Attacks](#A-New-Family-of-Neural-Networks-Provably-Resistant-to-Adversarial-Attacks)
 
-> paper list3:
-> (quick check on PASS)
-> [Adversarial Diversity and Hard Positive Generation](#Adversarial-Diversity-and-Hard-Positive-Generation)
->(check if Towards deep learning ... is deafeated as of 2018)
->[Wild patterns: Ten years after the rise of adversarial machine learning](#Wild-patterns-Ten-years-after-the-rise-of-adversarial-machine-learning)
-## Extending Adversarial Attacks and Defenses to Deep 3D Point Cloud Classifiers 
+> paper list3:  
+> (quick check on PASS)  
+> [Adversarial Diversity and Hard Positive Generation](#Adversarial-Diversity-and-Hard-Positive-Generation)  
+>(check if Towards deep learning ... is deafeated as of 2018)  
+>[Wild patterns: Ten years after the rise of adversarial machine learning](#Wild-patterns-Ten-years-after-the-rise-of-adversarial-machine-learning)  
+
+## Extending Adversarial Attacks and Defenses to Deep 3D Point Cloud Classifiers   
 [paper link](https://arxiv.org/abs/1901.03006)
 >This paper investigates adversarail attack and defence on 3D Point Cloud Classifiers, and found it to be attackable, and also defendable to some degree
 >(Jan. 2019)
@@ -127,24 +128,23 @@ For RBFI unit we have <img src="/doc/paper_review/tex/56330e280a8bc7c9fe91aed7d9
 #### summary
 > This work uses a new unit with <img src="/doc/paper_review/tex/2b4f8dfb585beeba8b6047b353d0efd9.svg?invert_in_darkmode&sanitize=true" align=middle width=18.00995789999999pt height=22.831056599999986pt/> distance for forward pass and similar differentiable function for backward pass (pseudogradient descent) to create a non linear model that resists adversarial attack for <img src="/doc/paper_review/tex/30e387f74c6297fbd0f38b3a98493efb.svg?invert_in_darkmode&sanitize=true" align=middle width=49.59466544999998pt height=21.18721440000001pt/>
 ##### chapter-wise note
-1) Introduction
+(1. Introduction)
 * Goodfellow et al. suggests (local) linearity is key. Consider <img src="/doc/paper_review/tex/d7d6c4ae906a3f1d711e357829fd3405.svg?invert_in_darkmode&sanitize=true" align=middle width=60.326440349999984pt height=26.438629799999987pt/> can have <img src="/doc/paper_review/tex/7a7ee7301f4d65735780e52959669f93.svg?invert_in_darkmode&sanitize=true" align=middle width=37.88256119999999pt height=24.65753399999998pt/> output change which snowballs through layers
 * MWD unit activate as <p align="center"><img src="/doc/paper_review/tex/a9e7b27c420e75a933de3ca9e73d1ce6.svg?invert_in_darkmode&sanitize=true" align=middle width=300.65031315pt height=26.964243899999996pt/></p> which is for x <img src="/doc/paper_review/tex/2b4f8dfb585beeba8b6047b353d0efd9.svg?invert_in_darkmode&sanitize=true" align=middle width=18.00995789999999pt height=22.831056599999986pt/> distance from w multiply non-negative weight <img src="/doc/paper_review/tex/194516c014804d683d1ab5a74f8c5647.svg?invert_in_darkmode&sanitize=true" align=middle width=14.061172949999989pt height=14.15524440000002pt/> for coordinate i
 * Found pseudogradient as proxy for training efficiently
-2) Related Work
+(2. Related Work)   
 * Goodfellow et al. mentioned RadialBasisFunction
 * Condsiders FGSM, I-FGSM, and PGD (Madry et al.)
-3) MWD Networks
+(3. MWD Networks)
 * MWD units output ~ 1 only when x close to w => AND gate
 * <img src="/doc/paper_review/tex/db73f7bb80b5ea6c4ad9f93f6bcfac5e.svg?invert_in_darkmode&sanitize=true" align=middle width=40.23047324999999pt height=22.465723500000017pt/> as NAND gate, use AND layer; NAND layer or mixed
 * gradient<img src="/doc/paper_review/tex/777d001ea1ec5971b67bb546ed760f97.svg?invert_in_darkmode&sanitize=true" align=middle width=16.43840384999999pt height=14.15524440000002pt/>pseudogradients: <p align="center"><img src="/doc/paper_review/tex/6efd6c3dfe02537d30d48bb0ac45115b.svg?invert_in_darkmode&sanitize=true" align=middle width=195.30935985pt height=37.8236826pt/></p><p align="center"><img src="/doc/paper_review/tex/c4c1cb8ca55ee578f95f6a9797c13c7a.svg?invert_in_darkmode&sanitize=true" align=middle width=356.8735302pt height=49.315569599999996pt/></p>
-7) Results
+(7. Results)
 * can use gradient, but will be very slow, experiment show training with gradient is not significantly better.
 * MWD Networks significantly higher than Relu trained with adversarial example for <img src="/doc/paper_review/tex/61f7c612d7d4c56da07ad1ebae0972de.svg?invert_in_darkmode&sanitize=true" align=middle width=79.7315046pt height=21.18721440000001pt/>
 #### branching points and thoughts
-1. various kind of pseudogradient -> reinforcement, local incentives?
-2. non-negative weight => Relu unit with single input, max op... pooling?
-3. what about all/non as in bio neurons? 
+1. is it possible to go from various kind of pseudogradient (this work) to using reinforcement, or a somewhat local incentives or different kind of propagation of error.
+2. what about all/non as in bio neurons? 
 
 ---
 
@@ -153,10 +153,13 @@ For RBFI unit we have <img src="/doc/paper_review/tex/56330e280a8bc7c9fe91aed7d9
 * [**paper link**](https://arxiv.org/abs/1605.01775)
 * **date:** May 2016
 #### summary
-> This work promotes PASS as a measure of how close an adversarial example is to its original counterpart, as considered by 'human'
-##### chapter-wise note
+> This work promotes psycometric perceptual adversarial similarity score (PASS) as a measure of how close an adversarial example is to its original counterpart, as considered by 'human'  
+(3. PASS)  
+* human can correctly classify --> should consider noticeble differece, excluding small perturbation, small rotation/translation
+* measurement: 1. align, by enhanced correlation coefficient  2. measure difference, by structural difference, regional structural similarity index <img src="/doc/paper_review/tex/9b2960263fd66033ece0516bdb3e36f2.svg?invert_in_darkmode&sanitize=true" align=middle width=296.3654958pt height=27.91243950000002pt/> corresponding to luminance, contrast, and structure. (can be calculated by mean, variance and covariance of that spot)
 
 #### branching points
+* This doesn't seem useful
 
 
 ## Wild patterns: Ten years after the rise of adversarial machine learning
@@ -164,7 +167,10 @@ For RBFI unit we have <img src="/doc/paper_review/tex/56330e280a8bc7c9fe91aed7d9
 * [**paper link**](https://www.sciencedirect.com/science/article/pii/S0031320318302565)
 * **date:** Jul 2018
 #### summary
-> This work summarize 10 years of development on the topic of adversarial attack. Regarding the work of Madry et al.
-##### chapter-wise note
+> This work summarize 10 years of development on the topic of adversarial attack. Regarding the work of Madry et al., the current state of the art defence has not been defeated yet.
 
-#### branching points
+* Robust optimization formulates adversarial learning as a minimax problem in which the inner problem maximizes the training loss by manipulating the traning points under worst-case, bounded pertutrbations, while the outer problem trains the learning algorithm to minimize the corresponding worst-case training loss. 
+
+
+#### branching point
+* would be useful to go through other parts of this review, has a good summarizing plot.
