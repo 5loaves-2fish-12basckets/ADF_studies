@@ -43,15 +43,13 @@ date: Feb. 26
 * week 3  
 scheduled: Mar. 1 - 7  
 
-1. read  (investigate certified robustness and provable defense)
+1. read  (investigate certified robustness and provable defense)   
 Certified Robustness to Adversarial Examples with Differential Privacy  
 https://arxiv.org/pdf/1802.03471.pdf  
 Towards Fast Computation of Certified Robustness for ReLU Networks  
 https://arxiv.org/pdf/1804.09699.pdf  
 Provable Defenses against Adversarial Examples via the Convex Outer Adversarial Polytope  
 https://arxiv.org/pdf/1711.00851.pdf  
-Certified Robustness to Adversarial Examples with Differential Privacy  
-https://arxiv.org/pdf/1802.03471.pdf  
 
 also 
 Wild patterns: Ten years after the rise of adversarial machine learning  
