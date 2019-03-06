@@ -33,7 +33,7 @@ class DataHandler(object):
         self.shapes = self.get_shapes()
 
     def build_dataloader(self, train):
-        if self.datatype='mnist':
+        if self.datatype=='mnist':
             dataset = self.MNIST(train)
         return data.DataLoader(dataset, batch_size=self.batch_size, shuffle=True) 
 
@@ -42,12 +42,12 @@ class DataHandler(object):
         trans = transforms.Compose([
             # transforms.Resize(img_size),
             transforms.ToTensor(),
-            transforms.Normalize(mean=0.5, std=0.5)
+            # transforms.Normalize(mean=0.5, std=0.5)
             # transforms.Normalize(mean=(0.5,0.5,0.5), std=(0.5,0.5,0.5))
         ])
 
         dataset = datasets.MNIST(
-            data_dir_root, train=train, download=True, transform=trans
+            self.data_dir_root, train=train, download=True, transform=trans
         )
         return dataset
 

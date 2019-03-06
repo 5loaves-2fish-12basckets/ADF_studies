@@ -29,40 +29,22 @@ def computer_time():
 
 class model_param():
 	def __init__(self, config):
-		self.layers = '32,32,32'
+		self.layer_sizes = [32,32,32]
 		self.andor = '^v^v' #^ and v or * random mix
 		self.use_pseudo = True #use pseudogradient or real gradient
 		
 		self.min_slope = 0.01
 		self.max_slope = 3.0
-		self.sensitivity_cost = 0
-		self.l1_regularization = 0
+		# self.sensitivity_cost = 0
+		# self.l1_regularization = 0
+
+		self.lr = 5 #...big...
 		self.init_slope = 0.25
 
 		self.batch_size = 100
 		self.test_batch_size = 100
 		self.epochs = 1
-		self.
-		if config.datatype =='mnist':
-			self.img_channel_num = 1
-		else:
-			self.img_channel_num = 3
-		self.z_dim = 100
-		self.use_batchnorm = True
-		self.use_relu = True
-		
-		#trainer
-		self.lr = 0.0002
-		self.betas = (0.5, 0.999)
-		# self.refresh(config)
 
-		#other
-		self.img_size = 64
-		self.batch_size = 128
-
-	def refresh(self, config):
-		if config.datatype == 'cifar10':
-			pass
 
 # trainer setting
 class training_param():
@@ -74,7 +56,7 @@ class training_param():
 		self.task_dir = config.task_result_root+'/'+config.taskname
 		self.dir_list = [self.task_dir]
 
-		self.save_model=False
+		self.save_model=True
 		self.model_filepath = self.task_dir+'/model.t7'
 
 
@@ -90,7 +72,7 @@ def configurations(taskname=None, datatype='mnist'):
 	# permanent directories
 	dir_args = parser.add_argument_group('directories')
 	dir_args.add_argument('--data_dir_root', type=str, default='~/datastore',
-		help='root for data download spot, \'/mnist/\' etc to be added')
+		help='root for data download spot')
 	dir_args.add_argument('--task_result_root', type=str, default='./output')
 	# task related directories in training_param
 
