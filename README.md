@@ -7,12 +7,12 @@ directories
     --raw_efforts
         README.md           contains schedules
         --paper_review      weekly paper review
-        lab_notes           contains errorlog and research directions
+        lab_notes.md        contains errorlog and research directions
     --src
-        module              common data/trainer modules
-        attacks             adversarial attack modules
-        defences            adversarial defence modules
-        special             special models
+        --module              common data/trainer modules
+        --attacks             adversarial attack modules
+        --defences            adversarial defence modules
+        --special             special models
         --reproductions     directory for reproductions of previous works
     --projects
         --vs                to test existing attack vs defence
