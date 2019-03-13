@@ -1,10 +1,8 @@
-
 # week1 paper reviews for ADF
 scheduled date: Feb. 1 - Feb. 7  
 <p align="right">  
 <a href="README.md">back to table</a>; <a href="https://github.com/5loaves-2fish-12basckets/ADF_studies/#weekly-schedule">back to schedule</a>
-</p>
- 
+</p> 
 > paper list:  
 [Are Adversarial Examples inevitable](#Are-Adversarial-Examples-inevitable)    
 [Adversarial Examples: Attacks and Defenses for Deep Learning](#Adversarial-Examples-Attacks-and-Defenses-for-Deep-Learning)    
@@ -15,7 +13,7 @@ scheduled date: Feb. 1 - Feb. 7
 
 ## Are Adversarial Examples inevitable? 
 [paper link](https://openreview.net/pdf?id=r1lWUoA9FQ)
->This paper attemps to illustrate and characterize adversarial examples using mathematical models
+>This paper attemps to illustrate and characterize adversarial examples using mathematical models.
 
 #### selected key points
 1. math setup: some data points lie in space $\Omega$. C partitions $\Omega$ into disjoint subsets. If there is $x,\hat{x}\in\Omega$ with $C(\hat{x})\neq c, C(x)=c$ and $d(x,\hat{x})\le\epsilon$. Then $\hat{x}$ is an adversarial example

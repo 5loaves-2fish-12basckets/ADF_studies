@@ -1,4 +1,3 @@
-
 # week2 paper reviews for ADF
 scheduled date: Feb. 8 - Feb. 14    
 
@@ -27,7 +26,7 @@ Adversarial Attacks](#A-New-Family-of-Neural-Networks-Provably-Resistant-to-Adve
 >(Jan. 2019)
 
 #### selected key points
-1. Point cloud classifiers classifies 'point cloud data' i.e. a bunch of points forming 3D representation. The only info is position, therefore adversarial samples moves points around and is more easily detectible due to outliers that change **overall shape**. Can be prevented by a. projecting to surface, and b. clip norm of neighboring distance.
+1. Point cloud classifiers classifies 'point cloud data' i.e. a bunch of points forming 3D representation. The only info is position, therefore adversarial samples moves points around and is more easily detectible due to outliers that change **overall shape**. Can be prevented by a. projecting to surface, and b. clip norm of neighboring distance
 2. Defend by a. adversarial training (Ian Goodfellow) b. Remove outlier (high avg dist. to neighbor); Remove salient point 
 3. Attacks are successful (~90%), but defence can break attacks success rate in half
 #### branching points
