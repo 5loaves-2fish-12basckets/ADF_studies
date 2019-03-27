@@ -81,7 +81,10 @@ def configurations(taskname=None, datatype='mnist'):
 	parser.add_argument('--taskname', type=str, default=taskname)
 	parser.add_argument('--datatype', type=str, default=datatype,
 						help='choose: mnist, lsun, celeba')
-
+	parser.add_argument('--modeltype', type=str, default='vgg',
+						help='choose: vgg, res')
+	parser.add_argument('--resume', type=bool, default=False)
+	parser.add_argument('--resume_path', type=str, default=None)
 
 	# permanent directories
 	dir_args = parser.add_argument_group('directories')
@@ -100,8 +103,8 @@ def configurations(taskname=None, datatype='mnist'):
 	else:
 		config.taskname = taskname
 
-	print('taskname is:', config.taskname)
-	print('datatype is:', config.datatype)
+	# print('taskname is:', config.taskname)
+	# print('datatype is:', config.datatype)
 	args = model_param(config)
 	opt = training_param(config)
 	return config, args, opt

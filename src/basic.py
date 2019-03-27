@@ -11,13 +11,12 @@ from module.utils import check_directories
 def main():
     config, args, opt = configurations('BASIC')
     check_directories(opt.dir_list)
-    result = []
-    for i in range(1,10):
-        opt.epochs = i
-        trainer = Trainer(config, args, opt)
-        result.append(trainer.train())
-
-    print(result)
+    config.modeltype = 'vgg'
+    config.random = 1
+    opt.epochs = 5
+    trainer = Trainer(config, args, opt)
+    trainer.train()
+    print(trainer.test())
 
 if __name__ == '__main__':
     main()

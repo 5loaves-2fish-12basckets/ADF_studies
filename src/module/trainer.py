@@ -19,8 +19,8 @@ __author__  = '{Jimmy Yeh}'
 __email__   = '{marrch30@gmail.com}'
 """
 
-from module.model import ResNet as model
-# from module.model import VGG as model
+from module.model import ResNet 
+from module.model import VGG 
 from module.datafunc import make_dataloader
 
 import torch
@@ -41,7 +41,14 @@ import os
 
 class Trainer():
     def __init__(self, config, args, opt):
-        self.model = model()
+        if config.modeltype == 'res':
+            self.model = ResNet()
+        elif config.modeltype == 'vgg':
+            self.model = VGG()
+
+        if config.resume == True:
+            self.model.load_state_dict(torch.load(config.resume_path)) 
+
         self.optimizer =  optim.Adam(self.model.parameters(), lr=args.lr, betas=args.betas)
         # self.criterion = nn.BCELoss()
         self.criterion = nn.CrossEntropyLoss()
@@ -57,19 +64,25 @@ class Trainer():
                                         self.args.batch_size)
         if self.device =='cuda':
             self.model.cuda()
+            torch.cuda.manual_seed_all(config.random)
+
+    def save(self, ep):
+        mtype = self.config.modeltype
+        rd = self.config.random
+        filename = 'output/%s/%d-%d.pth'%(mtype, rd, ep)
+        torch.save(self.model.state_dict(), filename)
 
     def train(self):
-        print('training for task:', self.config.taskname)
+        # print('training for task:', self.config.taskname)
 
-        print('train %d epochs'%self.opt.epochs)
-        # for i in range():
+        # print('train %d epochs'%self.opt.epochs)
         for i in range(self.opt.epochs):
             self.train_one_epoch()
-        return self.test()
+            self.save(i)
 
     def train_one_epoch(self):
-        pbar = tqdm(self.trainloader)
-
+        # pbar = tqdm(self.trainloader)
+        pbar = self.trainloader
         for inputs, targets in pbar:
             inputs = inputs.to(self.device)
             inputs = Variable(inputs, requires_grad = True)
@@ -85,26 +98,31 @@ class Trainer():
             accuracy = pred.eq(targets.view_as(pred)).sum().item()*100//len(pred)
             
             message = 'loss:%.4f, accuracy: %d%%'%(loss.item(), accuracy)            
-            pbar.set_description(message)
+            # pbar.set_description(message)
 
     def test(self):
-        pbar = tqdm(self.testloader)
+        pbar = self.testloader
+
+        # pbar = tqdm(self.testloader)
         accuracy = 0
         total = 0
+        corr_array = []
         for inputs, targets in pbar:
             inputs = inputs.to(self.device)
             targets = targets.to(self.device)
             
             output = self.model(inputs)
             pred =  output.argmax(dim=1, keepdim=True)
-            accuracy += pred.eq(targets.view_as(pred)).sum().item()
+            correct = pred.eq(targets.view_as(pred))
+            accuracy += correct.sum().item()
             total += len(pred)
+            corr_array.append(correct.squeeze().cpu().numpy())
 
         accuracy = accuracy/total * 100
-
-        message = 'test accuracy: %d'%accuracy
-        print(message)
-        return accuracy
+        # message = 'test accuracy: %d'%accuracy
+        # print(message)
+        corr_array = np.concatenate(np.array(corr_array))
+        return accuracy, corr_array
 
 
 

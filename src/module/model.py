@@ -24,7 +24,6 @@ class VGG(nn.Module):
             }
         self.features = self._make_layers(self.cfg[vgg_name])
         self.classifier = nn.Linear(2048,10)
-        print('using vgg')
         
     def forward(self, x):
         out = self.features(x)
@@ -120,7 +119,6 @@ class ResNet(nn.Module):
         self.layer3 = self.make_layer(block, 64, layers[2], 2)
         self.avg_pool = nn.AvgPool2d(8)
         self.fc = nn.Linear(64, num_classes)
-        print('using resnet')
         
     def make_layer(self, block, out_channels, blocks, stride=1):
         downsample = None
@@ -147,8 +145,6 @@ class ResNet(nn.Module):
         out = self.fc(out)
         return out
     
-
-
 
 class Inception(nn.Module):
     pass
