@@ -17,7 +17,11 @@ vgg results in \~700 data > 90%, \~250 > 98%
 res results in \~40 data > 90%, \~3 > 98%  
 
 TODO: 
-1. pick out \~700 data, \~250 data for vgg, check 0\~9 availability, compare shape with <90%, check accuracy
-2. do FGSM on selected data, mnist
-3. do distilled protection on selected data, mnist
-4. 
+1. check vgg train n epoch >90%, >95%, >98%, >99% count
+2. rewrite code, select data and test on n epoch models, pickout filename, copy in different directory
+3. vgg train n epoch on mnist test on mnist_test and font-digit, record percent
+4. do FGSM on mnist_test and font-digit, record percent
+
+next TODO:
+* reproduce normal defence
+* reproduce certified defence
