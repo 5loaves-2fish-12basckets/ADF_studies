@@ -1,0 +1,98 @@
+[
+    {
+        "from": "mnist_train",
+        "to": "mnist_train",
+        "samples": [
+            {
+                "label1": 6,
+                "label2": 6,
+                "distances": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    },
+    {
+        "from": "mnist_train",
+        "to": "mnist_test",
+        "samples": [
+            {
+                "label1": 6,
+                "label2": 2,
+                "distances": [
+                    1392.0,
+                    552.267333984375,
+                    18.855714797973633,
+                    1.0
+                ]
+            }
+        ]
+    },
+    {
+        "from": "mnist_train",
+        "to": "font_digit_select",
+        "samples": [
+            {
+                "label1": 6,
+                "label2": 5,
+                "distances": [
+                    4089.0,
+                    1836.8055419921875,
+                    38.40542221069336,
+                    1.0
+                ]
+            }
+        ]
+    },
+    {
+        "from": "mnist_test",
+        "to": "mnist_test",
+        "samples": [
+            {
+                "label1": 2,
+                "label2": 2,
+                "distances": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    },
+    {
+        "from": "mnist_test",
+        "to": "font_digit_select",
+        "samples": [
+            {
+                "label1": 2,
+                "label2": 5,
+                "distances": [
+                    4076.0,
+                    1872.342529296875,
+                    38.585601806640625,
+                    1.0
+                ]
+            }
+        ]
+    },
+    {
+        "from": "font_digit_select",
+        "to": "font_digit_select",
+        "samples": [
+            {
+                "label1": 5,
+                "label2": 5,
+                "distances": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    }
+]

@@ -19,6 +19,8 @@ from torch.utils import data
 from torchvision import datasets
 from torchvision import transforms
 
+import numpy as np
+
 def MNIST(data_dir_root, img_size, train):
     trans = transforms.Compose([
         transforms.Resize(img_size),
@@ -37,9 +39,15 @@ def make_dataloaders(data_dir_root, img_size, batch_size):
     testset = MNIST(data_dir_root, img_size, False)
     fontset = prepare_dataset(img_size)
 
-    trainloader = data.DataLoader(trainset, batch_size=batch_size, shuffle=False)
-    testloader = data.DataLoader(testset, batch_size=batch_size, shuffle=False)
-    fontloader = data.DataLoader(fontset, batch_size=batch_size, shuffle=False)
+    iter_length = 5000
+    indices = np.random.permutation(len(trainset))[:iter_length]
+    trainloader = data.DataLoader(trainset, batch_size=batch_size, sampler=data.SubsetRandomSampler(indices))
+    
+    indices = np.random.permutation(len(testset))[:iter_length]
+    testloader = data.DataLoader(testset, batch_size=batch_size, sampler=data.SubsetRandomSampler(indices))
+    
+    indices = np.random.permutation(len(fontset))[:iter_length]
+    fontloader = data.DataLoader(fontset, batch_size=batch_size, sampler=data.SubsetRandomSampler(indices))
 
     return trainloader, testloader, fontloader
 

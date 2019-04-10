@@ -1,7 +1,11 @@
-import numpy as np
+
+import json
 import torch
 from datafunc import make_dataloaders
 from tqdm import tqdm
+
+
+
 class config():
     def __init__(self):
         self.data_dir_root = '/home/jimmy/datastore'
@@ -27,25 +31,43 @@ def l8(i,j):
 ## create distance tables
 # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # device = torch.device('cpu')
+
+# cannot finish 60000 to 60000, random sample 1000 
+
+# fontloader lens is 579
+
 DATA = []
-pbar1 = tqdm(zip(ids, loaders), total=len(ids))
-for id1, loader1 in pbar1:
+pbar1 = tqdm(enumerate(zip(ids, loaders)), total=len(ids))
+for p, (id1, loader1) in pbar1:
+
     pbar1.set_description('from %s'%names[id1])
-    pbar2 = tqdm(zip(ids, loaders), total=len(ids))
+
+    pbar2 = tqdm(zip(ids[p:], loaders[p:]), total=len(ids[p:]))
     for id2, loader2 in pbar2:
+
+        SET = {}
+        SET['from'] = names[id1]
+        SET['to'] = names[id2]
+        SET['samples'] = []
+
         pbar2.set_description('to %s'%names[id2])
         for i, li in tqdm(loader1):
             for j, lj in tqdm(loader2):
-                i = i
-                j = j
                 d0 = l0(i,j)
                 d1 = l1(i,j)
                 d2 = l2(i,j)
                 d8 = l8(i,j)
-                DATA.append([id1, li.item(), id2, lj.item(), d0, d1, d2, d8])
+                sample = {}
+                sample['label1']=li.item()
+                sample['label2']=lj.item()
+                sample['distances']=[d0,d1,d2,d8]
+                SET['samples'].append(sample)
 
-DATA = np.array(DATA)
-np.save('full_data.npy', DATA)
+        DATA.append(SET)    
+
+with open('full_data.json', 'w') as json_file:
+    json.dump(DATA, json_file, indent = 4)
+
 ## analyse
 
 # avg, min(exclude same), max, between loaders
