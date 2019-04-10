@@ -1,6 +1,7 @@
+from module.trainer import Trainer
 
 def main():
-    trianer = Trainer()
+    trainer = Trainer()
     trainer.train()
     trainer.test() #mnist, font digit 95
     trainer.attack()

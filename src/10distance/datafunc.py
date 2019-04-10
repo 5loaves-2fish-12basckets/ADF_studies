@@ -37,7 +37,7 @@ def make_dataloaders(data_dir_root, img_size, batch_size):
     testset = MNIST(data_dir_root, img_size, False)
     fontset = prepare_dataset(img_size)
 
-    trainloader = data.DataLoader(trainset, batch_size=batch_size, shuffle=True)
+    trainloader = data.DataLoader(trainset, batch_size=batch_size, shuffle=False)
     testloader = data.DataLoader(testset, batch_size=batch_size, shuffle=False)
     fontloader = data.DataLoader(fontset, batch_size=batch_size, shuffle=False)
 
