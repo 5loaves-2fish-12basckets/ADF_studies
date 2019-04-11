@@ -33,13 +33,12 @@ def MNIST(data_dir_root, img_size, train):
     return dataset
 
 
-def make_dataloaders(data_dir_root, img_size, batch_size):
+def make_dataloaders(data_dir_root, img_size, batch_size, iter_length=50):
 
     trainset = MNIST(data_dir_root, img_size, True)
     testset = MNIST(data_dir_root, img_size, False)
     fontset = prepare_dataset(img_size)
 
-    iter_length = 5000
     indices = np.random.permutation(len(trainset))[:iter_length]
     trainloader = data.DataLoader(trainset, batch_size=batch_size, sampler=data.SubsetRandomSampler(indices))
     

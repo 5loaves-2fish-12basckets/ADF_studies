@@ -13,7 +13,7 @@ class config():
         self.batch_size = 1
 
 config = config()
-trainloader, testloader, fontloader = make_dataloaders(config.data_dir_root, config.img_size, config.batch_size)
+trainloader, testloader, fontloader = make_dataloaders(config.data_dir_root, config.img_size, config.batch_size, iter_length=50)
 ids = [1,2,3] # mnist_train=1 , mnist_test=2, font_digit_select = 3
 loaders = [trainloader, testloader, fontloader]
 
@@ -65,7 +65,7 @@ for p, (id1, loader1) in pbar1:
 
         DATA.append(SET)    
 
-with open('full_data.json', 'w') as json_file:
+with open('small_data.json', 'w') as json_file:
     json.dump(DATA, json_file, indent = 4)
 
 ## analyse
