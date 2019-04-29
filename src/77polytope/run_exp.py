@@ -15,13 +15,16 @@ def main():
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-    model_frames =[
-        ('lin',Linear_model)
-    ]
     # model_frames =[
-    #     ('lin',Linear_model), ('wide', Wide_model), ('deep',Deep_model),
-    #     ('vgg',VGG), ('res',ResNet)
+    #     ('lin',Linear_model),
     # ]
+    model_frames =[
+        ('lin',Linear_model), 
+        ('wide', Wide_model), 
+        ('deep',Deep_model),
+        ('vgg',VGG), 
+        ('res',ResNet)
+    ]
     # RESULT = {}
 
     for name, model_func in model_frames:
