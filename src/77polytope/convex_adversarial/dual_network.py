@@ -107,7 +107,10 @@ def robust_loss(net, epsilon, X, y,
     err = (f.max(1)[1] != y)
     if size_average: 
         err = err.sum().item()/X.size(0)
-    ce_loss = nn.CrossEntropyLoss(reduce=size_average)(f, y)
+        ce_loss = nn.CrossEntropyLoss(reduction='mean')(f, y)
+    else:
+        ce_loss = nn.CrossEntropyLoss(reduction='none')(f, y)
+
     return ce_loss, err
 
 class InputSequential(nn.Sequential): 
@@ -189,5 +192,8 @@ def robust_loss_parallel(net, epsilon, X, y, proj=None,
 
     if size_average: 
         err = err.sum().item()/X.size(0)
-    ce_loss = nn.CrossEntropyLoss(reduce=size_average)(f, y)
+        ce_loss = nn.CrossEntropyLoss(reduction='mean')(f, y)
+    else:
+        ce_loss = nn.CrossEntropyLoss(reduction='none')(f, y)
+
     return ce_loss, err

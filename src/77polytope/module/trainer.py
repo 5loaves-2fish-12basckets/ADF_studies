@@ -23,9 +23,9 @@ def train_test_attack(model, trainloader, testloader, optimizer, criterion, cert
             accuracy = pred.eq(target).data.sum()*100//len(pred)
             pbar.set_postfix(loss=loss.item(), acc=accuracy.item())
 
-    #test_attack
+    #test_attack1
     result = []
-    for eps in [i*0.01 for i in range(10)]:
+    for eps in tqdm([i*0.01 for i in range(10)], ncols=100):
         accuracy = 0
         length = 0
         pbar = tqdm(testloader, ncols=100)
@@ -40,8 +40,27 @@ def train_test_attack(model, trainloader, testloader, optimizer, criterion, cert
             length += len(pred)
 
         result.append(accuracy.item()*100//length)
+    print()
+    #test_attack1
+    result2 = []
+    for eps in tqdm([i*0.01 for i in range(10)], ncols=100):
+        accuracy = 0
+        length = 0
+        pbar = tqdm(testloader, ncols=100)
+        pbar.set_description(str(eps))
+        for images, target in pbar:
+            images, target = images.cuda(), target.cuda()
+            pert_image = PGD(eps, images, target, model, criterion)
 
-    return result
+            output = model(pert_image)
+            pred = output.argmax(dim=1)
+            accuracy += pred.eq(target).data.sum()
+            length += len(pred)
+
+        result2.append(accuracy.item()*100//length)
+    print()
+
+    return result, result2
 
 def FGSM(eps, images, target, model, criterion):
     X = images.clone()
@@ -50,4 +69,14 @@ def FGSM(eps, images, target, model, criterion):
     loss = criterion(output, target)
     loss.backward()
     grad_sign = X.grad.data.sign()
+    return (X + eps*grad_sign).clamp(0, 1)
+
+def PGD(eps, images, target, model, criterion):
+    X_orig = images.clone()
+    X = images.clone()
+    X.requires_grad = True
+    output = model(X)
+    loss = criterion(output, target)
+    loss.backward()
+    grad = X.grad.data
     return (X + eps*grad_sign).clamp(0, 1)
