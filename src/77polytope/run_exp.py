@@ -37,8 +37,9 @@ def main():
         print(name)
         model = model_func().cuda()
         optimizer = make_optimizers(model)
-        result = train_test_attack(model, trainloader, testloader, optimizer, criterion)
+        result, result2 = train_test_attack(model, trainloader, testloader, optimizer, criterion)
         print(result)
+        print(result2)
         
         torch.save(model.state_dict(), 'ckpt/'+name+'.pth')
         del model, optimizer
@@ -47,14 +48,15 @@ def main():
         ## robust        
         robust_model = model_func().cuda()
         optimizer_r = make_optimizers(robust_model)
-        result_c = train_test_attack(robust_model, trainloader, testloader, optimizer_r, criterion, cert=True, robust_loss=robust_loss)
+        result_c, result_c2 = train_test_attack(robust_model, trainloader, testloader, optimizer_r, criterion, cert=True, robust_loss=robust_loss)
         print(result_c)
+        print(result_c2)
 
         torch.save(robust_model.state_dict(), 'ckpt/'+name+'_cert.pth')
         del robust_model, optimizer_r
         torch.cuda.empty_cache()
 
-        RESULT[name] = (result, result_c)
+        RESULT[name] = (result, result2, result_c, result_c2)
 
     with open('ckpt/result.json','w') as f:
         json.dump(RESULT, f)

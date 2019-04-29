@@ -1,4 +1,4 @@
-
+import torch
 from tqdm import tqdm
 
 def train_test_attack(model, trainloader, testloader, optimizer, criterion, cert=False, robust_loss=None):
@@ -25,7 +25,7 @@ def train_test_attack(model, trainloader, testloader, optimizer, criterion, cert
 
     #test_attack1
     result = []
-    for eps in tqdm([i*0.01 for i in range(10)], ncols=100):
+    for eps in tqdm([i*0.01 for i in range(10)], ncols=100, desc='FGSM'):
         accuracy = 0
         length = 0
         pbar = tqdm(testloader, ncols=100)
@@ -43,7 +43,7 @@ def train_test_attack(model, trainloader, testloader, optimizer, criterion, cert
     print()
     #test_attack1
     result2 = []
-    for eps in tqdm([i*0.01 for i in range(10)], ncols=100):
+    for eps in tqdm([i*0.01 for i in range(10)], ncols=100, desc='PGD'):
         accuracy = 0
         length = 0
         pbar = tqdm(testloader, ncols=100)
@@ -72,11 +72,18 @@ def FGSM(eps, images, target, model, criterion):
     return (X + eps*grad_sign).clamp(0, 1)
 
 def PGD(eps, images, target, model, criterion):
-    X_orig = images.clone()
-    X = images.clone()
-    X.requires_grad = True
-    output = model(X)
-    loss = criterion(output, target)
-    loss.backward()
-    grad = X.grad.data
-    return (X + eps*grad_sign).clamp(0, 1)
+    X_orig = images.clone()    
+    X_var = images.clone()
+    for __ in range(40):
+        X = X_var.clone()
+        X.requires_grad = True
+        output = model(X)
+        loss = criterion(output, target)
+        loss.backward()
+        grad_sign = X.grad.data.sign()
+        X_var = X_var + 0.05*grad_sign
+        # X_var.clamp(X_orig-eps, X_orig+eps)
+        X_var = torch.where(X_var < X_orig-eps, X_orig-eps, X_var)
+        X_var = torch.where(X_var > X_orig+eps, X_orig+eps, X_var)
+        X_var.clamp(0, 1)
+    return X_var
