@@ -19,33 +19,34 @@ def main():
     #     ('lin',Linear_model),
     # ]
     model_frames =[
-        ('lin',Linear_model), 
+        # ('lin',Linear_model), 
         ('wide', Wide_model), 
         ('deep',Deep_model),
-        ('vgg',VGG), 
-        ('res',ResNet)
+        # ('vgg',VGG), 
+        # ('res',ResNet)
     ]
-    # RESULT = {}
+    RESULT = {}
 
     for name, model_func in model_frames:
+        print(name)
         model = model_func().cuda()
         robust_model = model_func().cuda()
         optimizer = make_optimizers(model)
         optimizer_r = make_optimizers(robust_model)
 
-        # result = train_test_attack(model, trainloader, testloader, optimizer, criterion)
-        # print(result)
+        result = train_test_attack(model, trainloader, testloader, optimizer, criterion)
+        print(result)
         result_c = train_test_attack(robust_model, trainloader, testloader, optimizer_r, criterion, cert=True, robust_loss=robust_loss)
         print(result_c)
 
 
-        # RESULT[name] = (result, result_cert)
-        # model.save('ckpt/'+name+'.pth')
-        # robust_model.save('ckpt/'+name+'_cert.pth')
+        RESULT[name] = (result, result_c)
+        model.save('ckpt/'+name+'.pth')
+        robust_model.save('ckpt/'+name+'_cert.pth')
 
 
-    # with open('ckpt/result.json','w') as f:
-    #     json.dump(f, RESULT)
+    with open('ckpt/result.json','w') as f:
+        json.dump(RESULT, f)
 
     #plot
 

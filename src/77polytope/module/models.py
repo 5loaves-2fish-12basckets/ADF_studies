@@ -71,7 +71,7 @@ def Deep_model(k=10):
     )
     return model
 
-def VGG():
+# def VGG():
 
 
 # def ResNet():
