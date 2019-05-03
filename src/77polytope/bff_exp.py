@@ -24,7 +24,6 @@ def main():
         # ('res',ResNet)
     ]
     RESULT = {}
-
     for name, model_func in model_frames:
         if name=='wide':
             batch_size = 16
@@ -35,30 +34,31 @@ def main():
         trainloader, testloader = make_dataloaders(batch_size=batch_size)
 
         print(name)
+        
         model = model_func().cuda()
         optimizer = make_optimizers(model)
-        result, result2 = train_test_attack(model, trainloader, testloader, optimizer, criterion)
+        result, result2 = train_test_attack(model, trainloader, testloader, optimizer, criterion, mode='all')
         print(result)
         print(result2)
         
-        torch.save(model.state_dict(), 'ckpt/'+name+'.pth')
+        torch.save(model.state_dict(), 'ckpt/new/'+name+'.pth')
         del model, optimizer
         torch.cuda.empty_cache()
 
         ## robust        
         robust_model = model_func().cuda()
         optimizer_r = make_optimizers(robust_model)
-        result_c, result_c2 = train_test_attack(robust_model, trainloader, testloader, optimizer_r, criterion, cert=True, robust_loss=robust_loss)
+        result_c, result_c2 = train_test_attack(robust_model, trainloader, testloader, optimizer_r, criterion, cert=True, robust_loss=robust_loss, mode='all')
         print(result_c)
         print(result_c2)
 
-        torch.save(robust_model.state_dict(), 'ckpt/'+name+'_cert.pth')
+        torch.save(robust_model.state_dict(), 'ckpt/new/'+name+'_cert.pth')
         del robust_model, optimizer_r
         torch.cuda.empty_cache()
 
         RESULT[name] = {'base_fgsm': result, 'base_pgd':result2, 'cert_fgsm':result_c, 'cert_pgd':result_c2}
 
-    with open('ckpt/result.json','w') as f:
+    with open('ckpt/'+mode+'/'+'result.json','w') as f:
         json.dump(RESULT, f, sort_keys=True, indent=4)
 
     #plot

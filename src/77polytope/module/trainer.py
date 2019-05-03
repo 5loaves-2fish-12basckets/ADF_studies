@@ -1,7 +1,9 @@
 import torch
 from tqdm import tqdm
+import torchvision.transforms.functional as TF
+import random
 
-def train_test_attack(model, trainloader, testloader, optimizer, criterion, cert=False, robust_loss=None):
+def train_test_attack(model, trainloader, testloader, optimizer, criterion, cert=False, robust_loss=None, mode=None):
     
     #train
     
@@ -31,6 +33,9 @@ def train_test_attack(model, trainloader, testloader, optimizer, criterion, cert
         pbar = tqdm(testloader, ncols=100)
         pbar.set_description(str(eps))
         for images, target in pbar:
+            if mode is not None:
+                images = translation(images, mode)
+
             images, target = images.cuda(), target.cuda()
             pert_image = FGSM(eps, images, target, model, criterion)
 
@@ -49,6 +54,9 @@ def train_test_attack(model, trainloader, testloader, optimizer, criterion, cert
         pbar = tqdm(testloader, ncols=100)
         pbar.set_description(str(eps))
         for images, target in pbar:
+            if mode is not None:
+                images = translation(images, mode)
+
             images, target = images.cuda(), target.cuda()
             pert_image = PGD(eps, images, target, model, criterion)
 
@@ -63,6 +71,7 @@ def train_test_attack(model, trainloader, testloader, optimizer, criterion, cert
     return result, result2
 
 def FGSM(eps, images, target, model, criterion):
+    ## this is 
     X = images.clone()
     X.requires_grad = True
     output = model(X)
@@ -87,3 +96,34 @@ def PGD(eps, images, target, model, criterion):
         X_var = torch.where(X_var > X_orig+eps, X_orig+eps, X_var)
         X_var.clamp(0, 1)
     return X_var
+
+def translation(images, mode):
+    new_images = []
+    for image in images:
+        image = translate_one(image, mode)
+        new_images.append(image.unsqueeze(0))
+
+    new_images = torch.cat(new_images)
+    return new_images
+
+
+def translate_one(image, mode):
+    image = TF.to_pil_image(image)
+    if mode == 'rot' or 'all':
+        sign = (int(random.random() < 0.5) - 0.5) * 2
+        image = TF.affine(image, sign*random.randint(10,30), (0,0), 1, 0)
+    if mode == 'trans' or 'all':
+        width, height = image.size
+        sign = (int(random.random() < 0.5) - 0.5) * 2
+        deltaw = sign*random.randint(int(0.1*width), int(0.2*width))
+        sign = (int(random.random() < 0.5) - 0.5) * 2
+        deltah = sign*random.randint(int(0.1*height), int(0.2*height))
+        image = TF.affine(image, 0, (deltaw, deltah), 1, 0)
+    if mode == 'scale' or 'all':
+        sign = (int(random.random() < 0.5) - 0.5) * 2
+        image = TF.affine(image, 0, (0,0), 1 + sign * 0.1, 0)
+
+    image = TF.to_tensor(image)
+    return image
+
+    
