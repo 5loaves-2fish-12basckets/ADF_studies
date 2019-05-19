@@ -100,7 +100,7 @@ def PGD(eps, images, target, model, criterion):
 def translation(images, mode):
     new_images = []
     for image in images:
-        image = translate_one(image, mode)
+        image = translate_tri(image, mode)
         new_images.append(image.unsqueeze(0))
 
     new_images = torch.cat(new_images)
@@ -126,4 +126,55 @@ def translate_one(image, mode):
     image = TF.to_tensor(image)
     return image
 
-    
+def translate_two(image, mode):
+    image = TF.to_pil_image(image)
+    if mode == 'rot' or 'all':
+        sign = (int(random.random() < 0.5) - 0.5) * 2
+        image = TF.affine(image, sign*random.randint(1,5), (0,0), 1, 0)
+    if mode == 'trans' or 'all':
+        width, height = image.size
+        sign = (int(random.random() < 0.5) - 0.5) * 2
+        deltaw = sign*random.randint(int(0.01*width), int(0.02*width))
+        sign = (int(random.random() < 0.5) - 0.5) * 2
+        deltah = sign*random.randint(int(0.01*height), int(0.02*height))
+        image = TF.affine(image, 0, (deltaw, deltah), 1, 0)
+    if mode == 'scale' or 'all':
+        sign = (int(random.random() < 0.5) - 0.5) * 2
+        image = TF.affine(image, 0, (0,0), 1 + sign * 0.01, 0)
+
+    image = TF.to_tensor(image)
+    return image
+
+def translate_tri(image, mode):
+    image = TF.to_pil_image(image)
+    if mode == 'rot' or 'all':
+        sign = (int(random.random() < 0.5) - 0.5) * 2
+        image = TF.affine(image, sign*random.randint(5,10), (0,0), 1, 0)
+    if mode == 'trans' or 'all':
+        width, height = image.size
+        sign = (int(random.random() < 0.5) - 0.5) * 2
+        deltaw = sign*random.randint(int(0.05*width), int(0.1*width))
+        sign = (int(random.random() < 0.5) - 0.5) * 2
+        deltah = sign*random.randint(int(0.05*height), int(0.1*height))
+        image = TF.affine(image, 0, (deltaw, deltah), 1, 0)
+    if mode == 'scale' or 'all':
+        sign = (int(random.random() < 0.5) - 0.5) * 2
+        image = TF.affine(image, 0, (0,0), 1 + sign * 0.05, 0)
+
+    image = TF.to_tensor(image)
+    return image
+
+if __name__ == '__main__':
+    import sys
+    sys.path.append('.')
+    from module.datafunc import make_dataloaders
+    from torchvision.utils import save_image
+    trainloader, testloader = make_dataloaders(batch_size=1)
+    for image, __ in testloader:
+        image1 = translate_one(image.squeeze(0), mode='all')   
+        save_image(image1, 'img1.png')
+        image2 = translate_two(image.squeeze(0), mode='all')   
+        save_image(image2, 'img2.png')
+        image3 = translate_tri(image.squeeze(0), mode='all')   
+        save_image(image3, 'img3.png')
+        break

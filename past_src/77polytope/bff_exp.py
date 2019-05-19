@@ -41,7 +41,7 @@ def main():
         print(result)
         print(result2)
         
-        torch.save(model.state_dict(), 'ckpt/new/'+name+'.pth')
+        torch.save(model.state_dict(), 'ckpt/new3/'+name+'.pth')
         del model, optimizer
         torch.cuda.empty_cache()
 
@@ -52,13 +52,13 @@ def main():
         print(result_c)
         print(result_c2)
 
-        torch.save(robust_model.state_dict(), 'ckpt/new/'+name+'_cert.pth')
+        torch.save(robust_model.state_dict(), 'ckpt/new3/'+name+'_cert.pth')
         del robust_model, optimizer_r
         torch.cuda.empty_cache()
 
         RESULT[name] = {'base_fgsm': result, 'base_pgd':result2, 'cert_fgsm':result_c, 'cert_pgd':result_c2}
 
-    with open('ckpt/'+mode+'/'+'result.json','w') as f:
+    with open('ckpt/new2/'+'result.json','w') as f:
         json.dump(RESULT, f, sort_keys=True, indent=4)
 
     #plot
