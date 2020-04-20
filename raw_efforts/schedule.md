@@ -1,4 +1,4 @@
-# ADF_studies Schedule
+# Adversarial Attack and Defense Study Schedule
 this is a 21 week plan to study Adversarial Attacks and Defences
 
 >paper reviews, tf-tutorials, and final report on GAN in /doc directory  
